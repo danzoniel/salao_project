@@ -1,0 +1,49 @@
+.loginButton {
+  -fx-padding: 10px 20px;
+  -fx-background-color:  #4D4D4D;
+  -fx-text-fill: #fff;
+  -fx-border-color: transparent;
+  -fx-border-radius: 4px;
+  }
+
+  .loginButton:hover {
+    -fx-cursor: pointer;
+  }
+  
+  .anchor-pane {
+    /* Center-align all child objects */
+    -fx-alignment: center;
+  
+    /* Set the background image */
+    -fx-background-image: url('../assets/background.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+  }
+
+  .pane {
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .text-field {
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: hsl(0, 0%, 30%);
+    -fx-background-color: transparent;
+  }
+  
+  .text-field .text-input {
+    -fx-background-color: transparent;
+  }
+  
+  .text-field .prompt-text {
+    -fx-fill: #4d4d4d;
+  }
+  
+  .text-field .prompt-text:empty {
+    -fx-padding: 0;
+  }
+  
+  
+  
+  
