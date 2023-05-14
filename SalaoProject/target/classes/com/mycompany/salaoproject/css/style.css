@@ -1,0 +1,66 @@
+.loginButton {
+  -fx-padding: 10px 20px;
+  -fx-background-color:  #4D4D4D;
+  -fx-text-fill: #fff;
+  -fx-border-color: transparent;
+  -fx-border-radius: 4px;
+  -fx-font-size: 18px;
+  -fx-padding: 5px 0 5px 0;
+  }
+
+  
+.anchor-pane {
+  /* Center-align all child objects */
+  -fx-alignment: center;
+
+  /* Set the background image */
+  -fx-background-image: url('../assets/background.jpg');
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+}
+
+.pane {
+  -fx-background-color: rgba(255, 255, 255, 0.7);
+}
+
+.text-field {
+  -fx-border-style: hidden hidden solid hidden;
+  -fx-border-width: 0 0 2 0;
+  -fx-border-color: hsl(0, 0%, 30%);
+  -fx-background-color: transparent;
+}
+
+.text-field .text-input {
+  -fx-background-color: transparent;
+}
+
+.text-field .prompt-text {
+  -fx-fill: #4d4d4d;
+}
+
+.text-field .prompt-text:empty {
+  -fx-padding: 0;
+}
+
+.image-email-label {
+  -fx-background-image: url('../assets/email.png');
+  -fx-background-size: 24px 24px;
+  -fx-background-position: center;
+  -fx-min-width: 24px;
+  -fx-min-height: 24px;
+  -fx-max-width: 24px;
+  -fx-max-height: 24px;
+  -fx-margin: 0 5% 0 0;
+}
+
+.image-pass-label {
+  -fx-background-image: url('../assets/pass_icon.png');
+  -fx-background-size: 24px 24px;
+  -fx-background-position: center;
+  -fx-min-width: 24px;
+  -fx-min-height: 24px;
+  -fx-max-width: 24px;
+  -fx-max-height: 24px;
+  -fx-margin: 0 5% 0 0;
+}
