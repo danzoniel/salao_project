@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="640.0" styleClass="anchor-pane" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.salaoproject.LoginController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="640.0" styleClass="anchor-pane" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.salaoproject.PrimaryController">
    <children>
       <GridPane alignment="CENTER" layoutX="53.0" layoutY="41.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.7" prefHeight="466.0" prefWidth="536.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="40.0">
         <columnConstraints>
@@ -39,15 +39,10 @@
                   <Font name="Montserrat Thin" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="forgottenPassButton" onMouseClicked="#handleForgottenPass" text="esqueci minha senha" textFill="#4d4d4d" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
             <TextField id="usernameField" fx:id="usernameField" focusTraversable="false" prefWidth="217.0" promptText="e-mail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label id="login_icon_label" prefWidth="28.0" styleClass="image-pass-label" stylesheets="@css/style.css" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
             <Label id="login_icon_label" prefWidth="28.0" styleClass="image-email-label" stylesheets="@css/style.css" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-            <Button id="loginButton" fx:id="loginButton" maxWidth="230.0" mnemonicParsing="false" prefWidth="230.0" stylesheets="@css/style.css" text="entrar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+            <Button id="loginButton" fx:id="loginButton" maxWidth="230.0" mnemonicParsing="false" prefWidth="230.0" stylesheets="@css/style.css" text="alterar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
