@@ -8,6 +8,9 @@
   -fx-padding: 5px 0 5px 0;
   }
 
+  .loginButton:hover {
+    -fx-background-color: #757575; /* Final color */
+}
   
 .anchor-pane {
   /* Center-align all child objects */
@@ -26,8 +29,8 @@
 
 .text-field {
   -fx-border-style: hidden hidden solid hidden;
-  -fx-border-width: 0 0 2 0;
-  -fx-border-color: hsl(0, 0%, 30%);
+  -fx-border-width: 0 0 2.5 0;
+  /* -fx-border-color: hsl(0, 0%, 30%); */
   -fx-background-color: transparent;
 }
 

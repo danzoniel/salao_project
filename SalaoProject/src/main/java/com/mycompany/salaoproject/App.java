@@ -22,6 +22,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 
 
 /**
@@ -34,15 +35,16 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
     
-        // AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("telalogin.fxml"));
-    
-        // Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-    
-        // stage.setWidth(screenBounds.getWidth());
-        // stage.setHeight(screenBounds.getHeight());
+        
+        Image icon = new Image("https://www.pinclipart.com/picdir/middle/187-1874171_scars-clipart.png"); // Replace "icon.png" with the path to your icon image file
+
+        int iconWidth = 64;
+        int iconHeight = 64;
+        Image resizedIcon = new Image(icon.getUrl(), iconWidth, iconHeight, true, true);
+        stage.getIcons().add(resizedIcon);
 
         Scene scene = new Scene(loadFXML("telalogin"), 850, 550);
-        stage.setTitle("Login");
+        stage.setTitle("Contaleiro");
         stage.setScene(scene);
         stage.show();
     }
