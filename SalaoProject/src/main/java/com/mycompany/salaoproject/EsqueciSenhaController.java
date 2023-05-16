@@ -17,7 +17,7 @@ public class EsqueciSenhaController {
 
     @FXML
     void handleBackToLogin(MouseEvent event) throws IOException{
-          // Load the FXML file of the new scene
+        
     FXMLLoader loader = new FXMLLoader(getClass().getResource("telalogin.fxml"));
     
     Parent newSceneRoot;

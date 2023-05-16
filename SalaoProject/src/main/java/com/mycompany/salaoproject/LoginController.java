@@ -17,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -59,7 +58,6 @@ public class LoginController {
 
     @FXML
     void handleForgottenPass(MouseEvent event) throws IOException{
-          // Load the FXML file of the new scene
     FXMLLoader loader = new FXMLLoader(getClass().getResource("esqueci_senha.fxml"));
     
     Parent newSceneRoot;
@@ -76,6 +74,6 @@ public class LoginController {
     Stage currentStage = (Stage) currentScene.getWindow();
 
     currentStage.setScene(newScene);
-    
+
     }
 }
