@@ -10,6 +10,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -29,6 +30,9 @@ public class LoginController {
 
     @FXML
     private Label forgottenPassButton;
+
+    @FXML
+    private Label titleLabel;
 
     @FXML
     void handleLogin(ActionEvent event) {
@@ -55,7 +59,23 @@ public class LoginController {
 
     @FXML
     void handleForgottenPass(MouseEvent event) throws IOException{
-        System.out.println("troca de tela");
+          // Load the FXML file of the new scene
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("esqueci_senha.fxml"));
+    
+    Parent newSceneRoot;
+    try {
+        newSceneRoot = loader.load();
+    } catch (IOException e) {
+        e.printStackTrace();
+        return;
     }
 
+    Scene currentScene = forgottenPassButton.getScene();
+    Scene newScene = new Scene(newSceneRoot, currentScene.getWidth(), currentScene.getHeight());
+
+    Stage currentStage = (Stage) currentScene.getWindow();
+
+    currentStage.setScene(newScene);
+    
+    }
 }
