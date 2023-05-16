@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="640.0" styleClass="anchor-pane" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.salaoproject.PrimaryController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="640.0" styleClass="anchor-pane" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.salaoproject.EsqueciSenhaController">
    <children>
       <GridPane alignment="CENTER" layoutX="53.0" layoutY="41.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.7" prefHeight="466.0" prefWidth="536.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="40.0">
         <columnConstraints>
@@ -29,7 +30,7 @@
             <RowConstraints maxHeight="216.0" minHeight="10.0" prefHeight="115.0" valignment="CENTER" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
-            <Label styleClass="title-stylish" stylesheets="@css/style.css" text="OLÁ," GridPane.columnIndex="1" GridPane.valignment="CENTER">
+            <Label styleClass="title-stylish" stylesheets="@css/style.css" text="Alterar Senha" GridPane.columnIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font name="Montserrat Thin" size="48.0" />
                </font>
@@ -51,6 +52,14 @@
                   <String fx:value="button-stylish" />
                </styleClass>
             </Button>
+            <Label fx:id="backToLoginButton" alignment="TOP_RIGHT" onMouseClicked="#handleBackToLogin" styleClass="image-close-label" stylesheets="@css/style.css" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <GridPane.margin>
+                  <Insets right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
             <PasswordField id="passwordField" fx:id="passwordField" prefWidth="217.0" promptText="senha" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>

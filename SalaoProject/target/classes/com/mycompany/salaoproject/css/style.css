@@ -67,3 +67,14 @@
   -fx-max-height: 24px;
   -fx-margin: 0 5% 0 0;
 }
+
+.image-close-label {
+  -fx-background-image: url('../assets/fechar-simbolo-de-botao-circular.png');
+  -fx-background-size: 24px 24px;
+  -fx-background-position: center;
+  -fx-min-width: 24px;
+  -fx-min-height: 24px;
+  -fx-max-width: 24px;
+  -fx-max-height: 24px;
+  -fx-margin: 0 5% 0 0;
+}
