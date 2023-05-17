@@ -44,10 +44,10 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <TextField id="usernameField" fx:id="usernameField" focusTraversable="false" prefWidth="217.0" promptText="e-mail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField id="usernameField" fx:id="usernameField" prefWidth="217.0" promptText="e-mail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label id="login_icon_label" prefWidth="28.0" styleClass="image-pass-label" stylesheets="@css/style.css" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
             <Label id="login_icon_label" prefWidth="28.0" styleClass="image-email-label" stylesheets="@css/style.css" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-            <Button id="loginButton" fx:id="loginButton" maxWidth="230.0" mnemonicParsing="false" prefWidth="230.0" stylesheets="@css/style.css" text="entrar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+            <Button id="loginButton" fx:id="loginButton" maxWidth="230.0" mnemonicParsing="false" onMouseClicked="#handleLogin" prefWidth="230.0" stylesheets="@css/style.css" text="entrar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

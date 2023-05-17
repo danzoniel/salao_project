@@ -1,0 +1,19 @@
+        // String[] columns = {"email", "senha"};
+        // Object[] values = {usernameField.getText(), passwordField.getText()};
+        // usuarioDAO.addIntoBD("usuario_admin", columns, values);
+
+        // String[] columns = {"senha"};
+        // Object[] values = {passwordField.getText()};
+        // String tabela = "usuario_admin";
+        // String condition = "email = '" + usernameField.getText() + "'";
+        // usuarioDAO.updateDataDb(tabela, columns, values, condition);
+
+        // String condition = criaCondition("email", usernameField.getText());
+        // usuarioDAO.deleteFromDb(System.getProperty("TABELADB", "usuario_admin"), condition);
+
+        // String condition = criaCondition("email", usernameField.getText());
+        // String[] columns = {"email", "senha"};
+        // usuarioDAO.getDataDb(System.getProperty("TABELADB", "usuario_admin"), columns, condition);
+
+        // String[] columns = {"email", "senha"};
+        // usuarioDAO.getAllDataDb(System.getProperty("TABELADB", "usuario_admin"), columns);

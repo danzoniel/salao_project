@@ -7,9 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 public class App extends Application {
@@ -18,8 +16,15 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
+        System.setProperty("URLDB", "jdbc:mysql://localhost:3306/salao_db");
+        System.setProperty("USERDB", "myuser");
+        System.setProperty("PASSDB", "mypassword");
+        System.setProperty("TABELADB", "default");
+
+
     
-        Image icon = new Image("https://www.pinclipart.com/picdir/middle/187-1874171_scars-clipart.png"); // Replace "icon.png" with the path to your icon image file
+        Image icon = new Image("https://www.pinclipart.com/picdir/middle/187-1874171_scars-clipart.png");
 
         int iconWidth = 64;
         int iconHeight = 64;

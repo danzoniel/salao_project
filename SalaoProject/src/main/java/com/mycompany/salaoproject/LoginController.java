@@ -6,6 +6,9 @@ package com.mycompany.salaoproject;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,11 +16,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import com.mycompany.salaoproject.DAO.FunctionDAO;
+import com.mycompany.salaoproject.DAO.HelperDAO;
+import com.mycompany.salaoproject.DAO.UsuarioDAO;
+import com.mycompany.salaoproject.models.Usuario;
+
 
 public class LoginController {
 
@@ -34,26 +43,31 @@ public class LoginController {
     private Label titleLabel;
 
     @FXML
-    void handleLogin(ActionEvent event) {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        System.out.println(username);
-        System.out.println(usernameField.getText());
+    private Button loginButton;
+
+    @FXML
+    public void initialize() {
+        loginButton.disableProperty().bind(usernameField.textProperty().isEmpty().or(passwordField.textProperty().isEmpty()));
+    }
+
+    private UsuarioDAO usuarioDAO;
+
+    public LoginController() {
+        HelperDAO helperDAO = new HelperDAO(System.getProperty("URLDB"), System.getProperty("USERDB"), System.getProperty("PASSDB"));
+        usuarioDAO = new UsuarioDAO(helperDAO);
+    }
 
 
-        if (username.equals("admin") && password.equals("admin")) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Login");
-            alert.setHeaderText(null);
-            alert.setContentText("Login successful!");
-            alert.showAndWait();
-        } else {
-            // login failed, show error message
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Login Failed");
-            alert.setHeaderText("Invalid username or password.");
-            alert.showAndWait();
-        }
+    @FXML
+    void handleLogin(MouseEvent event) throws SQLException {
+        validarUsuarioSenha(usernameField.getText(), passwordField.getText());  
+    }
+
+    public String criaCondition(String nomeColuna, Object condition) {
+        if (condition instanceof String) {
+        return nomeColuna + " ='" + condition + "'";
+        } 
+        return nomeColuna + " = " + condition;
     }
 
     @FXML
@@ -75,5 +89,43 @@ public class LoginController {
 
     currentStage.setScene(newScene);
 
+    }
+
+    private boolean validarEmail(String email) {
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public boolean validarUsuarioSenha(String email, String senha) throws SQLException {
+        // Verificar se o email está em um formato válido
+        if (!validarEmail(email)) {
+            System.out.println("Email inválido. Informe um email válido.");
+            return false;
+        }
+
+        Usuario usuario = null;
+
+        try {
+            usuario = usuarioDAO.getUsuario(email);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (usuario == null) {
+            System.out.println("Usuário não encontrado.");
+            return false;
+        }
+
+        // Verificar se a senha está correta
+        if (!usuario.getSenha().equals(senha)) {
+            System.out.println("Usuário ou senha incorreta.");
+            return false;
+        }
+
+        // Usuário e senha válidos
+        System.out.println("Login realizado com sucesso.");
+        return true;
     }
 }
