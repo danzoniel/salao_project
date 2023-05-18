@@ -20,9 +20,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import com.mycompany.salaoproject.DAO.FunctionDAO;
 import com.mycompany.salaoproject.DAO.HelperDAO;
 import com.mycompany.salaoproject.DAO.UsuarioDAO;
 import com.mycompany.salaoproject.models.Usuario;
@@ -46,21 +49,70 @@ public class LoginController {
     private Button loginButton;
 
     @FXML
+    private Label formatoInvalidoLabel;
+
+    @FXML
+    private Label senhaIncorretaLabel;
+
+    @FXML
+    private Label showPasswordButton;
+
+
+    @FXML
+    private TextField passwordFieldView;
+
+
+    @FXML
     public void initialize() {
-        loginButton.disableProperty().bind(usernameField.textProperty().isEmpty().or(passwordField.textProperty().isEmpty()));
+        System.setProperty("URLDB", "jdbc:mysql://localhost:3306/salao_db");
+        System.setProperty("USERDB", "myuser");
+        System.setProperty("PASSDB", "mypassword");
+        System.setProperty("TABELADB", "default");
+
+        // loginButton.disableProperty().bind(usernameField.textProperty().isEmpty().or(passwordField.textProperty().isEmpty()));
+        // formatoInvalidoLabel.setVisible(false);
+        // senhaIncorretaLabel.setVisible(false);
     }
 
     private UsuarioDAO usuarioDAO;
 
+    public void LoadScene(String fileName) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fileName));
+        
+        Parent newSceneRoot;
+        try {
+            newSceneRoot = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Scene currentScene = forgottenPassButton.getScene();
+        Scene newScene = new Scene(newSceneRoot, currentScene.getWidth(), currentScene.getHeight());
+
+        Stage currentStage = (Stage) currentScene.getWindow();
+
+        currentStage.setScene(newScene);
+    }
+
     public LoginController() {
-        HelperDAO helperDAO = new HelperDAO(System.getProperty("URLDB"), System.getProperty("USERDB"), System.getProperty("PASSDB"));
+        // HelperDAO helperDAO = new HelperDAO(System.getProperty("URLDB"), System.getProperty("USERDB"), System.getProperty("PASSDB"));
+        HelperDAO helperDAO = new HelperDAO("jdbc:mysql://localhost:3306/salao_db", "myuser", "mypassword");
         usuarioDAO = new UsuarioDAO(helperDAO);
     }
 
 
     @FXML
-    void handleLogin(MouseEvent event) throws SQLException {
-        validarUsuarioSenha(usernameField.getText(), passwordField.getText());  
+    void handleLogin(MouseEvent event) throws SQLException, IOException {
+        formatoInvalidoLabel.setVisible(false);
+        senhaIncorretaLabel.setVisible(false);
+        boolean validaLogin;
+        validaLogin = validarUsuarioSenha(usernameField.getText(), passwordField.getText());
+        if (validaLogin == true) {
+            LoadScene("tela_dash.fxml");
+        } else {
+            System.out.println("ocorreu um erro durante o processo de login");
+        }
     }
 
     public String criaCondition(String nomeColuna, Object condition) {
@@ -70,25 +122,38 @@ public class LoginController {
         return nomeColuna + " = " + condition;
     }
 
+    boolean viewStatus = false;
+
     @FXML
-    void handleForgottenPass(MouseEvent event) throws IOException{
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("esqueci_senha.fxml"));
-    
-    Parent newSceneRoot;
-    try {
-        newSceneRoot = loader.load();
-    } catch (IOException e) {
-        e.printStackTrace();
-        return;
+    void checkPassField(KeyEvent  event) {
+        if (passwordField.getText() != "") {
+            showPasswordButton.setDisable(false);
+        } else {
+            showPasswordButton.setDisable(true);
+        }
+        if (viewStatus == true) {
+            passwordField.setText(passwordFieldView.getText());
+        }
     }
 
-    Scene currentScene = forgottenPassButton.getScene();
-    Scene newScene = new Scene(newSceneRoot, currentScene.getWidth(), currentScene.getHeight());
+    @FXML
+    void handleForgottenPass(MouseEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("esqueci_senha.fxml"));
+        
+        Parent newSceneRoot;
+        try {
+            newSceneRoot = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
 
-    Stage currentStage = (Stage) currentScene.getWindow();
+        Scene currentScene = forgottenPassButton.getScene();
+        Scene newScene = new Scene(newSceneRoot, currentScene.getWidth(), currentScene.getHeight());
 
-    currentStage.setScene(newScene);
+        Stage currentStage = (Stage) currentScene.getWindow();
 
+        currentStage.setScene(newScene);
     }
 
     private boolean validarEmail(String email) {
@@ -98,10 +163,11 @@ public class LoginController {
         return matcher.matches();
     }
 
-    public boolean validarUsuarioSenha(String email, String senha) throws SQLException {
-        // Verificar se o email está em um formato válido
+    public boolean validarUsuarioSenha(String email, String senha) throws SQLException, IOException {
         if (!validarEmail(email)) {
-            System.out.println("Email inválido. Informe um email válido.");
+            formatoInvalidoLabel.setVisible(true);
+            formatoInvalidoLabel.setText("Email inválido. Informe um email válido.");
+            System.out.println("formato de email inválido");
             return false;
         }
 
@@ -114,18 +180,42 @@ public class LoginController {
         }
 
         if (usuario == null) {
+            senhaIncorretaLabel.setVisible(true);
+            senhaIncorretaLabel.setText("Usuário ou senha incorreta.");
             System.out.println("Usuário não encontrado.");
             return false;
         }
 
-        // Verificar se a senha está correta
         if (!usuario.getSenha().equals(senha)) {
-            System.out.println("Usuário ou senha incorreta.");
+            senhaIncorretaLabel.setVisible(true);
+            senhaIncorretaLabel.setText("Usuário ou senha incorreta.");
+            System.out.println("Senha incorreta.");
             return false;
         }
 
-        // Usuário e senha válidos
         System.out.println("Login realizado com sucesso.");
         return true;
     }
+
+
+    @FXML
+    void showPass(MouseEvent event) {
+        if (viewStatus == false) {
+            viewStatus = true;
+            String password = passwordField.getText();
+            passwordField.setVisible(false);
+            passwordFieldView.setText(password);
+            passwordFieldView.setVisible(true);
+        } else {
+            viewStatus = false;
+            String password = passwordFieldView.getText();
+            passwordFieldView.setVisible(false);
+            passwordField.setText(password);
+            passwordField.setVisible(true);
+            usernameField.setFocusTraversable(false);
+            passwordField.setFocusTraversable(true);
+        }
+    }
+    
 }
+

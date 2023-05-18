@@ -1,0 +1,26 @@
+.filter-icon {
+    -fx-background-image: url('../assets/filter.png');
+    -fx-background-size: 24px 24px;
+    -fx-background-position: center;
+    -fx-min-width: 24px;
+    -fx-min-height: 24px;
+    -fx-max-width: 24px;
+    -fx-max-height: 24px;
+    -fx-margin: 0 5% 0 0;
+}
+
+.choice-box {
+    /* -fx-box-sizing: border-box;
+    -fx-position: absolute; */
+    -fx-width: 192px;
+    -fx-height: 35px;
+    -fx-left: 1047px;
+    -fx-top: 194px;
+    -fx-border: 1px solid #000000;
+}
+
+.my-pane {
+    -fx-border-color: #D9D9D9;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+}

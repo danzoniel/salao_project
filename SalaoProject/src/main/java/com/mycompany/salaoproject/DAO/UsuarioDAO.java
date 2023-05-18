@@ -53,7 +53,7 @@ public class UsuarioDAO {
     // método para obter um usuário específico do banco de dados
     public Usuario getUsuario(String usuarioEmail) throws SQLException {
         Usuario usuario = null;
-        String query = "SELECT * FROM usuario_admin WHERE email=?";
+        String query = "SELECT * FROM usuario_admin WHERE email = ?";
         try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
             statement.setString(1, usuarioEmail);
             ResultSet resultSet = statement.executeQuery();

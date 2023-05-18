@@ -1,9 +1,11 @@
 package com.mycompany.salaoproject;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -14,15 +16,12 @@ public class App extends Application {
 
     private static Scene scene;
 
+
+    
+    
+
     @Override
     public void start(Stage stage) throws IOException {
-
-        System.setProperty("URLDB", "jdbc:mysql://localhost:3306/salao_db");
-        System.setProperty("USERDB", "myuser");
-        System.setProperty("PASSDB", "mypassword");
-        System.setProperty("TABELADB", "default");
-
-
     
         Image icon = new Image("https://www.pinclipart.com/picdir/middle/187-1874171_scars-clipart.png");
 
