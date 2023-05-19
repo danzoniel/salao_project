@@ -115,12 +115,12 @@ public class LoginController {
         }
     }
 
-    public String criaCondition(String nomeColuna, Object condition) {
-        if (condition instanceof String) {
-        return nomeColuna + " ='" + condition + "'";
-        } 
-        return nomeColuna + " = " + condition;
-    }
+    // public String criaCondition(String nomeColuna, Object condition) {
+    //     if (condition instanceof String) {
+    //     return nomeColuna + " ='" + condition + "'";
+    //     } 
+    //     return nomeColuna + " = " + condition;
+    // }
 
     boolean viewStatus = false;
 
