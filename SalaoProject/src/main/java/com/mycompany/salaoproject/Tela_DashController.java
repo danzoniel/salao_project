@@ -60,21 +60,6 @@ public class Tela_DashController {
                 dados.add(new XYChart.Data<>(month.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")), comparecimentosPorMes));
             }
 
-            xAxis.setCategories(FXCollections.observableArrayList(
-                Month.JANUARY.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.FEBRUARY.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.MARCH.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.APRIL.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.MAY.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.JUNE.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.JULY.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.AUGUST.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.SEPTEMBER.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.OCTOBER.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.NOVEMBER.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR")),
-                Month.DECEMBER.getDisplayName(TextStyle.SHORT_STANDALONE, new Locale("pt", "BR"))
-            ));
-
             XYChart.Series<String, Integer> series = new XYChart.Series<>();
             series.setName("Comparecimentos");
             series.setData(dados);
@@ -103,10 +88,6 @@ public class Tela_DashController {
 
     @FXML
     private BarChart<String, Integer> barChartDespesas;
-    @FXML
-    private CategoryAxis xAxisDespesas;
-    @FXML
-    private NumberAxis yAxisDespesas;
 
     private void geraDespesaChart() {
         try {
@@ -129,8 +110,11 @@ public class Tela_DashController {
             }
     
             XYChart.Series<String, Integer> seriesDespesas = new XYChart.Series<>();
+            barChartDespesas.setLegendVisible(false);
             seriesDespesas.setName("Despesas");
             seriesDespesas.setData(dadosDespesas);
+            barChartDespesas.getXAxis().setLabel("Mês");
+            barChartDespesas.getYAxis().setLabel("Despesa R$");
     
             barChartDespesas.getData().add(seriesDespesas);
         } catch (Exception e) {
@@ -138,5 +122,3 @@ public class Tela_DashController {
         }
     }
 }
-
-
