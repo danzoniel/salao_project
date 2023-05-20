@@ -16,13 +16,25 @@ public class HelperDAO {
     private String jdbcPassword;
     private Connection jdbcConnection;
 
+    private static HelperDAO instance;
+
     public HelperDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) {
         this.jdbcURL = jdbcURL;
         this.jdbcUsername = jdbcUsername;
         this.jdbcPassword = jdbcPassword;
     }
 
-    // método para conectar ao banco de dados MySQL
+    public static HelperDAO getInstance() {
+        if (instance == null) {
+            String jdbcURL = "jdbc:mysql://localhost:3306/salao_db";
+            String jdbcUsername = "myuser";
+            String jdbcPassword = "mypassword";
+            
+            instance = new HelperDAO(jdbcURL, jdbcUsername, jdbcPassword);
+        }
+        return instance;
+    }
+
     public void connect() throws SQLException {
         if (jdbcConnection == null || jdbcConnection.isClosed()) {
             try {

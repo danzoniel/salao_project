@@ -1,5 +1,14 @@
 DROP DATABASE IF exists salao_db;
 
+DROP TABLE IF EXISTS usuario_admin;
+DROP TABLE IF EXISTS servicos_agendados;
+DROP TABLE IF EXISTS servicos_disponiveis;
+DROP TABLE IF EXISTS fluxo_caixa;
+DROP TABLE IF EXISTS despesa;
+DROP TABLE IF EXISTS comparecimento;
+DROP TABLE IF EXISTS agendamento;
+DROP TABLE IF EXISTS cliente;
+
 create database salao_db;
 
 use salao_db;
@@ -18,7 +27,7 @@ preco DOUBLE NOT NULL
 
 CREATE TABLE usuario_admin (
 email varchar(50) PRIMARY KEY,
-senha varchar(16) not null
+senha varchar(16)
 );
 
 CREATE TABLE despesa (
@@ -71,22 +80,3 @@ foreign key(id_despesa, data_saida) references despesa(id_despesa, data_saida),
 foreign key(id_comparecimento, id_agendamento, email_cliente, data_agendamento) references comparecimento(id_comparecimento, id_agendamento, email_cliente, data_agendamento)
 );
 
-insert into usuario_admin(email, senha) values ("salao@gmail.com", "admin");
-
-insert into cliente(email, nome) values ("fulana1@gmail.com","fulana1");
-insert into cliente(email, nome) values ("fulana2@gmail.com","fulana2");
-insert into cliente(email, nome) values ("fulana3@gmail.com","fulana3");
-insert into cliente(email, nome) values ("fulana4@gmail.com","fulana4");
-
-insert into despesa(id_despesa, produto_descricao, preco_unitario, quantidade, data_saida) values (1, "tinta cabelo", 50.00, 2, STR_TO_DATE('20/05/2023', '%d/%m/%Y'));
-insert into despesa(id_despesa, produto_descricao, preco_unitario, quantidade, data_saida) values (2, "esmaltes", 20.00, 10, STR_TO_DATE('19/05/2023', '%d/%m/%Y'));
-insert into despesa(id_despesa, produto_descricao, preco_unitario, quantidade, data_saida) values (3, "esmaltes", 20.00, 10, STR_TO_DATE('20/05/2023', '%d/%m/%Y'));
-insert into despesa(id_despesa, produto_descricao, preco_unitario, quantidade, data_saida) values (4, "secador cabelo", 600.00, 1, STR_TO_DATE('18/05/2023', '%d/%m/%Y'));
-
-insert into agendamento(id_agendamento, email_cliente, data_agendamento) values (1, "fulana1@gmail.com", '2023-05-20 12:30:00');
-insert into agendamento(id_agendamento, email_cliente, data_agendamento) values (2, "fulana1@gmail.com", '2023-05-20 12:50:00');
-insert into agendamento(id_agendamento, email_cliente, data_agendamento) values (3, "fulana2@gmail.com", '2023-05-23 13:00:00');
-insert into agendamento(id_agendamento, email_cliente, data_agendamento) values (4, "fulana3@gmail.com", '2023-05-25 15:00:00');
-
-describe comparecimento;
-insert into comparecimento(id_comparecimento, id_agendamento, email_cliente, data_agendamento) values ("1", "1", "fulana1@gmail.com", "2023-05-20 12:30:00")

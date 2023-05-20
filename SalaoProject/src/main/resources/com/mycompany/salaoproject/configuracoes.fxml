@@ -26,10 +26,10 @@
             <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="227.0" valignment="CENTER" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
-          <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-         <fx:include maxHeight="30.0" prefHeight="30.0" source="menu.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-         </children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <fx:include maxHeight="30.0" prefHeight="30.0" source="menu.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
             </AnchorPane>
             <Label alignment="CENTER" styleClass="title-menu" text="Configurações" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" stylesheets="@css/configs.css" GridPane.rowIndex="3">

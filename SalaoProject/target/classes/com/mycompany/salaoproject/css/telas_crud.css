@@ -1,0 +1,106 @@
+.loginButton {
+    -fx-padding: 10px 20px;
+    -fx-background-color:  #4D4D4D;
+    -fx-text-fill: #fff;
+    -fx-border-color: transparent;
+    -fx-border-radius: 4px;
+    -fx-font-size: 18px;
+    -fx-padding: 5px 0 5px 0;
+    }
+  
+    .loginButton:hover {
+      -fx-background-color: #757575; /* Final color */
+  }
+    
+  
+  .text-field {
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-width: 0 0 2.5 0;
+    /* -fx-border-color: hsl(0, 0%, 30%); */
+    -fx-background-color: transparent;
+    -fx-margin: 0 5 0 5;
+  }
+  
+  .text-field .text-input {
+    -fx-background-color: transparent;
+  }
+  
+  .text-field .prompt-text {
+    -fx-fill: #4d4d4d;
+  }
+  
+  .text-field .prompt-text:empty {
+    -fx-padding: 0;
+  }
+  
+  
+  .error-msg-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: red;
+  }
+  
+  
+  .my-hbox {
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+
+.my-hbox .child {
+    -fx-margin: 5px;
+}
+
+.servicos-icon {
+    -fx-background-image: url('../assets/servicos.png');
+    -fx-background-size: 82px 82px;
+    -fx-background-position: center;
+    -fx-min-width: 82px;
+    -fx-min-height: 82px;
+    -fx-max-width: 82px;
+    -fx-max-height: 82px;
+    -fx-margin: 0 5% 0 0;
+}
+
+.admins-icon {
+    -fx-background-image: url('../assets/admins.png');
+    -fx-background-size: 82px 82px;
+    -fx-background-position: center;
+    -fx-min-width: 82px;
+    -fx-min-height: 82px;
+    -fx-max-width: 82px;
+    -fx-max-height: 82px;
+    -fx-margin: 0 5% 0 0;
+}
+
+.agendamentos-icon {
+    -fx-background-image: url('../assets/agendamentos.png');
+    -fx-background-size: 82px 82px;
+    -fx-background-position: center;
+    -fx-min-width: 82px;
+    -fx-min-height: 82px;
+    -fx-max-width: 82px;
+    -fx-max-height: 82px;
+    -fx-margin: 0 5% 0 0;
+}
+
+.despesas-icon {
+    -fx-background-image: url('../assets/despesas.png');
+    -fx-background-size: 82px 82px;
+    -fx-background-position: center;
+    -fx-min-width: 82px;
+    -fx-min-height: 82px;
+    -fx-max-width: 82px;
+    -fx-max-height: 82px;
+    -fx-margin: 0 5% 0 0;
+}
+
+
+.clientes-icon {
+    -fx-background-image: url('../assets/clientesv3.png');
+    -fx-background-size: 82px 82px;
+    -fx-background-position: center;
+    -fx-min-width: 82px;
+    -fx-min-height: 82px;
+    -fx-max-width: 82px;
+    -fx-max-height: 82px;
+    -fx-margin: 0 5% 0 0;
+}

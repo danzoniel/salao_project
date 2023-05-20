@@ -1,26 +1,10 @@
 package com.mycompany.salaoproject;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ListResourceBundle;
-import java.util.ResourceBundle;
 
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
+
 
 public class MenuController {
 
@@ -42,105 +26,29 @@ public class MenuController {
 
     @FXML
     void handleSair(MouseEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("telalogin.fxml"));
-        
-        Parent newSceneRoot;
-        try {
-            newSceneRoot = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        Scene currentScene = btnSair.getScene();
-        Scene newScene = new Scene(newSceneRoot, currentScene.getWidth(), currentScene.getHeight());
-
-        Stage currentStage = (Stage) currentScene.getWindow();
-
-        currentStage.setScene(newScene);
+        ScreenChanger.changeScreen(btnSair, "telalogin.fxml");
     }
 
     @FXML
     void handleDash(MouseEvent event) {
+        ScreenChanger.changeScreen(btnDash, "tela_dash.fxml");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("tela_dash.fxml"));
-        
-        Parent newSceneRoot;
-        try {
-            newSceneRoot = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        Scene currentScene = btnDash.getScene();
-        Scene newScene = new Scene(newSceneRoot, currentScene.getWidth(), currentScene.getHeight());
-
-        Stage currentStage = (Stage) currentScene.getWindow();
-
-        currentStage.setScene(newScene);
     }
 
     @FXML
     void handleConfig(MouseEvent event) {
+        ScreenChanger.changeScreen(btnConfig, "configuracoes.fxml");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("configuracoes.fxml"));
-        
-        Parent newSceneRoot;
-        try {
-            newSceneRoot = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        Scene currentScene = btnConfig.getScene();
-        Scene newScene = new Scene(newSceneRoot, currentScene.getWidth(), currentScene.getHeight());
-
-        Stage currentStage = (Stage) currentScene.getWindow();
-
-        currentStage.setScene(newScene);
     }
 
     @FXML
     void handleHistAtend(MouseEvent event) {
+        ScreenChanger.changeScreen(btnHistAtend, "telalogin.fxml");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("telalogin.fxml"));
-        
-        Parent newSceneRoot;
-        try {
-            newSceneRoot = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        Scene currentScene = btnHistAtend.getScene();
-        Scene newScene = new Scene(newSceneRoot, currentScene.getWidth(), currentScene.getHeight());
-
-        Stage currentStage = (Stage) currentScene.getWindow();
-
-        currentStage.setScene(newScene);
     }
 
     @FXML
     void handleHistDesp(MouseEvent event) {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("telalogin.fxml"));
-        
-        Parent newSceneRoot;
-        try {
-            newSceneRoot = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        Scene currentScene = btnHistDesp.getScene();
-        Scene newScene = new Scene(newSceneRoot, currentScene.getWidth(), currentScene.getHeight());
-
-        Stage currentStage = (Stage) currentScene.getWindow();
-
-        currentStage.setScene(newScene);
+        ScreenChanger.changeScreen(btnHistDesp, "telalogin.fxml");
     }
 }

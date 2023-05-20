@@ -109,7 +109,7 @@ public class LoginController {
         boolean validaLogin;
         validaLogin = validarUsuarioSenha(usernameField.getText(), passwordField.getText());
         if (validaLogin == true) {
-            LoadScene("tela_dash.fxml");
+            ScreenChanger.changeScreen(forgottenPassButton, "tela_dash.fxml");
         } else {
             System.out.println("ocorreu um erro durante o processo de login");
         }

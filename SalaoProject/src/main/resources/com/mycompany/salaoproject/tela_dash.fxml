@@ -67,12 +67,12 @@
                            </rowConstraints>
                            <children>
                               <Label text="Nũmero de Clientes - " GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                              <BarChart GridPane.rowIndex="1">
+                              <BarChart GridPane.rowIndex="1" fx:id="barChart">
                                  <xAxis>
-                                    <CategoryAxis side="BOTTOM" />
+                                    <CategoryAxis side="BOTTOM" fx:id="xAxis"/>
                                  </xAxis>
                                  <yAxis>
-                                    <NumberAxis side="LEFT" />
+                                    <NumberAxis side="LEFT"/>
                                  </yAxis>
                               </BarChart>
                            </children>
@@ -95,9 +95,9 @@
                            </rowConstraints>
                            <children>
                               <Label text="Saída (R$) -" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                              <BarChart GridPane.rowIndex="1">
+                              <BarChart fx:id="barChartDespesas" GridPane.rowIndex="1">
                                  <xAxis>
-                                    <CategoryAxis side="BOTTOM" />
+                                    <CategoryAxis fx:id="xAxisDespesas" side="BOTTOM" />
                                  </xAxis>
                                  <yAxis>
                                     <NumberAxis side="LEFT" />
@@ -119,7 +119,7 @@
                            </rowConstraints>
                            <children>
                               <Label text="Lucro (R$) -" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                              <LineChart GridPane.rowIndex="1">
+                              <LineChart fx:id="lineChart" GridPane.rowIndex="1">
                                  <xAxis>
                                     <CategoryAxis side="BOTTOM" />
                                  </xAxis>

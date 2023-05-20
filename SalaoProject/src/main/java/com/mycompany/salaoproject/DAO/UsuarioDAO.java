@@ -6,7 +6,6 @@ package com.mycompany.salaoproject.DAO;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.mycompany.salaoproject.models.Usuario;
 
 public class UsuarioDAO {
