@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,18 +22,20 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="123.0" />
-          <RowConstraints maxHeight="152.0" minHeight="64.0" prefHeight="69.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="171.0" minHeight="67.0" prefHeight="71.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="164.0" minHeight="80.0" prefHeight="151.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="100.0" />
+          <RowConstraints maxHeight="152.0" minHeight="64.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="171.0" minHeight="37.0" prefHeight="65.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="164.0" minHeight="56.0" prefHeight="59.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="164.0" minHeight="67.0" prefHeight="67.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="164.0" minHeight="79.0" prefHeight="79.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
         </rowConstraints>
                          <AnchorPane maxHeight="200.0" prefHeight="200.0" prefWidth="200.0" GridPane.hgrow="NEVER">
                <children>
                   <fx:include maxHeight="30.0" prefHeight="30.0" source="menu.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-         <Button maxWidth="200.0" minWidth="150.0" mnemonicParsing="false" prefWidth="200.0" styleClass="loginButton" text="cadastrar serviço" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+         <Button maxWidth="200.0" minWidth="150.0" mnemonicParsing="false" prefWidth="200.0" styleClass="loginButton" text="cadastrar despesa" GridPane.halignment="CENTER" GridPane.rowIndex="7">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
@@ -41,17 +44,17 @@
             <children>
                <HBox alignment="CENTER" layoutX="227.0" prefHeight="81.0" prefWidth="349.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
-                     <Label styleClass="servicos-icon">
+                     <Label styleClass="despesas-icon">
                         <HBox.margin>
                            <Insets right="10.0" />
                         </HBox.margin>
                      </Label>
-                     <Label text="Cadastrar &gt;">
+                     <Label text="Cadastro &gt;">
                         <font>
                            <Font size="36.0" />
                         </font>
                      </Label>
-                     <Label text="Serviços">
+                     <Label text="Despesas">
                         <font>
                            <Font name="System Bold" size="36.0" />
                         </font>
@@ -78,7 +81,7 @@
             <children>
                <VBox layoutX="24.0" layoutY="-86.0" prefHeight="114.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
-                     <Label text="Serviços" />
+                     <Label text="Produto" />
                      <TextField />
                      <Label fx:id="lbErrorServicos" text="Label" textFill="RED" />
                   </children>
@@ -95,9 +98,37 @@
             <children>
                <VBox layoutX="46.0" layoutY="-16.0" prefHeight="184.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
-                     <Label text="Preço" />
+                     <Label text="Preço unitário" />
                      <TextField />
                      <Label fx:id="lbErrorPreco" text="Label" textFill="RED" />
+                  </children>
+               </VBox>
+            </children>
+            <GridPane.margin>
+               <Insets left="100.0" right="100.0" />
+            </GridPane.margin>
+         </AnchorPane>
+         <AnchorPane prefHeight="45.0" prefWidth="747.0" GridPane.rowIndex="5">
+            <children>
+               <VBox layoutX="31.0" layoutY="-50.0" prefHeight="150.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                     <Label text="Quantidade" />
+                     <TextField />
+                     <Label text="Label" textFill="RED" />
+                  </children>
+               </VBox>
+            </children>
+            <padding>
+               <Insets left="100.0" right="100.0" />
+            </padding>
+         </AnchorPane>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+            <children>
+               <VBox layoutX="43.0" layoutY="-50.0" prefHeight="150.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                     <Label text="Data compra" />
+                     <DatePicker prefHeight="29.0" prefWidth="601.0" styleClass="text-field" />
+                     <Label text="Label" textFill="RED" />
                   </children>
                </VBox>
             </children>

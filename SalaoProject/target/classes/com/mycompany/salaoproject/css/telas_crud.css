@@ -12,13 +12,17 @@
       -fx-background-color: #757575; /* Final color */
   }
     
+
+  .cadastra {
+    -fx-background: #FFFFFF;
+    
+  }
   
   .text-field {
-    -fx-border-style: hidden hidden solid hidden;
-    -fx-border-width: 0 0 2.5 0;
-    /* -fx-border-color: hsl(0, 0%, 30%); */
+    -fx-border-style: solid solid solid solid;
     -fx-background-color: transparent;
     -fx-margin: 0 5 0 5;
+    -fx-border: 1px solid #000000;
   }
   
   .text-field .text-input {
