@@ -27,29 +27,23 @@ public class UsuarioDAO {
     // }
 
 
-    // método para atualizar um usuário existente no banco de dados
-    // public void updateUsuario(Usuario usuario) throws SQLException {
-    //     String query = "UPDATE usuario SET nome=?, usuario=?, senha=?, email=? WHERE id=?";
-    //     try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
-    //         statement.setString(1, usuario.getNome());
-    //         statement.setString(2, usuario.getUsuario());
-    //         statement.setString(3, usuario.getSenha());
-    //         statement.setString(4, usuario.getEmail());
-    //         statement.setInt(5, usuario.getId());
-    //         statement.executeUpdate();
-    //     }
-    // }
+    public void updateUsuario(Usuario usuario) throws SQLException {
+        String query = "UPDATE usuario_admin SET senha=? WHERE email=?";
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
+            statement.setString(1, usuario.getSenha());
+            statement.setString(2, usuario.getEmail());
+            statement.executeUpdate();
+        }
+    }
 
-    // método para excluir um usuário do banco de dados
-    // public void deleteUsuario(int usuarioId) throws SQLException {
-    //     String query = "DELETE FROM usuario WHERE id=?";
-    //     try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
-    //         statement.setInt(1, usuarioId);
-    //         statement.executeUpdate();
-    //     }
-    // }
+    public void excluirUsuario(Usuario usuario) throws SQLException {
+        String query = "DELETE FROM usuario_admin WHERE email=?";
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
+            statement.setString(1, usuario.getEmail());
+            statement.executeUpdate();
+        }
+    }
 
-    // método para obter um usuário específico do banco de dados
     public Usuario getUsuario(String usuarioEmail) throws SQLException {
         Usuario usuario = null;
         String query = "SELECT * FROM usuario_admin WHERE email = ?";
@@ -67,20 +61,30 @@ public class UsuarioDAO {
     }
 
 
-    // método para obter todos os usuários do banco de dados
-    public List<Usuario> getUsuarios() throws SQLException {
+    public List<Usuario> getUsuarios(String filtro) throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
-        String query = "SELECT * FROM usuario";
-        try (Statement statement = helperDAO.getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery(query)) {
-            while (resultSet.next()) {
-                Usuario usuario = new Usuario(
-                    resultSet.getString("email"),
-                    resultSet.getString("senha")
-                );
-                usuarios.add(usuario);
+        String query = "SELECT * FROM usuario_admin";
+    
+        if (filtro != null && !filtro.isEmpty()) {
+            query += " WHERE email LIKE ?";
+        }
+    
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
+            if (filtro != null && !filtro.isEmpty()) {
+                statement.setString(1, "%" + filtro + "%");
+            }
+    
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Usuario usuario = new Usuario(
+                            resultSet.getString("email"),
+                            resultSet.getString("senha")
+                    );
+                    usuarios.add(usuario);
+                }
             }
         }
         return usuarios;
     }
+    
 }

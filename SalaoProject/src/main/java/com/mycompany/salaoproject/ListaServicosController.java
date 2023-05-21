@@ -137,7 +137,6 @@ tableView.getColumns().add(cAcao);
                 tableView.getItems().remove(servico);
             } catch (SQLException e) {
                 e.printStackTrace();
-                // Lógica de tratamento de erro, se necessário
             }
         }
     }
