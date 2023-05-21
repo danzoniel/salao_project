@@ -104,3 +104,7 @@
     -fx-max-height: 82px;
     -fx-margin: 0 5% 0 0;
 }
+
+.anchor-pane-bd {
+  -fx-background-color: #FFFFFF;
+}

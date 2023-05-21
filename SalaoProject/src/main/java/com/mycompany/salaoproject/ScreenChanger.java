@@ -2,13 +2,13 @@ package com.mycompany.salaoproject;
 
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ScreenChanger {
-    public static void changeScreen(Label button, String fxmlFileName) {
+    public static void changeScreen(Node button, String fxmlFileName) {
         if (button != null && button.getScene() != null) {
             FXMLLoader loader = new FXMLLoader(ScreenChanger.class.getResource(fxmlFileName));
 

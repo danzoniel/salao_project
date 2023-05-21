@@ -3,6 +3,7 @@ module com.mycompany.salaoproject {
     requires javafx.fxml;
     requires java.sql;
 
+    opens com.mycompany.salaoproject.models to javafx.base;
     opens com.mycompany.salaoproject to javafx.fxml;
     exports com.mycompany.salaoproject;
 }

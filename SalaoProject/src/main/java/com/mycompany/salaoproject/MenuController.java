@@ -43,12 +43,12 @@ public class MenuController {
 
     @FXML
     void handleHistAtend(MouseEvent event) {
-        ScreenChanger.changeScreen(btnHistAtend, "telalogin.fxml");
+        ScreenChanger.changeScreen(btnHistAtend, "lista_atendimentos.fxml");
 
     }
 
     @FXML
     void handleHistDesp(MouseEvent event) {
-        ScreenChanger.changeScreen(btnHistDesp, "telalogin.fxml");
+        ScreenChanger.changeScreen(btnHistDesp, "lista_despesas.fxml");
     }
 }
