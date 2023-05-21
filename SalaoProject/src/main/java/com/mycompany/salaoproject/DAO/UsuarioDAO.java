@@ -16,16 +16,14 @@ public class UsuarioDAO {
     }
 
 
-    // método para adicionar um usuário ao banco de dados
-    // public void addUsuario(Usuario usuario) throws SQLException {
-    //     String query = "INSERT INTO usuario (email, senha) VALUES (?, ?)";
-    //     try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
-    //         statement.setString(4, usuario.getEmail());
-    //         statement.setString(3, usuario.getSenha());
-    //         statement.executeUpdate();
-    //     }
-    // }
-
+    public void addUsuario(Usuario usuario) throws SQLException {
+        String query = "INSERT INTO usuario_admin (email, senha) VALUES (?, ?)";
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
+            statement.setString(1, usuario.getEmail());
+            statement.setString(2, usuario.getSenha());
+            statement.executeUpdate();
+        }
+    }
 
     public void updateUsuario(Usuario usuario) throws SQLException {
         String query = "UPDATE usuario_admin SET senha=? WHERE email=?";

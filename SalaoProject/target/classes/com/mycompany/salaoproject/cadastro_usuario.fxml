@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="549.0" minWidth="640.0" prefHeight="549.0" prefWidth="747.0" styleClass="anchor-pane-bd" stylesheets="@css/telas_crud.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="549.0" minWidth="640.0" prefHeight="549.0" prefWidth="747.0" styleClass="anchor-pane-bd" stylesheets="@css/telas_crud.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.salaoproject.CadastraUsuarioController">
    <children>
       <GridPane layoutY="57.0" prefHeight="549.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -23,6 +23,7 @@
         <rowConstraints>
           <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="123.0" />
+            <RowConstraints maxHeight="152.0" minHeight="64.0" prefHeight="69.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="152.0" minHeight="64.0" prefHeight="69.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="171.0" minHeight="67.0" prefHeight="71.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="164.0" minHeight="80.0" prefHeight="151.0" vgrow="SOMETIMES" />
@@ -33,7 +34,7 @@
                   <fx:include maxHeight="30.0" prefHeight="30.0" source="menu.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-         <Button maxWidth="200.0" minWidth="150.0" mnemonicParsing="false" prefWidth="200.0" styleClass="loginButton" text="cadastrar administrador" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+         <Button fx:id="btnCadastrarAdmin" maxWidth="200.0" minWidth="150.0" mnemonicParsing="false" onMouseClicked="#cadastrarAdministrador" prefWidth="200.0" styleClass="loginButton" text="cadastrar administrador" GridPane.halignment="CENTER" GridPane.rowIndex="6">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
@@ -61,13 +62,13 @@
                </HBox>
             </children>
          </AnchorPane>
-         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
             <children>
                <VBox prefHeight="147.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <Label text="E-mail" />
-                     <TextField styleClass="cadastra" />
-                     <Label fx:id="lbErrorId" text="Label" textFill="RED" />
+                     <TextField fx:id="tfEmail" styleClass="cadastra" />
+                     <Label fx:id="lbErrorEmail" text="Label" textFill="RED" />
                   </children>
                </VBox>
             </children>
@@ -75,13 +76,13 @@
                <Insets left="100.0" right="100.0" />
             </GridPane.margin>
          </AnchorPane>
-         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
             <children>
                <VBox layoutX="24.0" layoutY="-86.0" prefHeight="114.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <Label text="Senha" />
-                     <PasswordField />
-                     <Label fx:id="lbErrorServicos" text="Label" textFill="RED" />
+                     <PasswordField fx:id="tfSenha" />
+                     <Label fx:id="lbErrorSenha" text="Label" textFill="RED" />
                   </children>
                </VBox>
             </children>
@@ -92,19 +93,28 @@
                <Insets left="100.0" right="100.0" />
             </GridPane.margin>
          </AnchorPane>
-         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
             <children>
                <VBox layoutX="46.0" layoutY="-16.0" prefHeight="184.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <Label text="Confirmar senha" />
-                     <PasswordField />
-                     <Label fx:id="lbErrorPreco" text="Label" textFill="RED" />
+                     <PasswordField fx:id="tfConfirmarSenha" onMouseClicked="#cadastrarAdministrador" />
+                     <Label fx:id="lbErrorConfirmarSenha" text="Label" textFill="RED" />
                   </children>
                </VBox>
             </children>
             <GridPane.margin>
                <Insets left="100.0" right="100.0" />
             </GridPane.margin>
+         </AnchorPane>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <children>
+               <Label fx:id="lbSuccess" alignment="CENTER" layoutX="86.0" layoutY="14.0" text="Label" textFill="#11b241" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+               </Label>
+            </children>
          </AnchorPane>
       </GridPane>
    </children>

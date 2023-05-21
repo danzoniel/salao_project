@@ -6,7 +6,6 @@ import com.mycompany.salaoproject.DAO.HelperDAO;
 import com.mycompany.salaoproject.DAO.ServicosDAO;
 import com.mycompany.salaoproject.models.Servicos;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
