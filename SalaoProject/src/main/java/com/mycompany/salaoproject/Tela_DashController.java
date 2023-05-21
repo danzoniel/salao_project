@@ -1,11 +1,9 @@
 package com.mycompany.salaoproject;
 
-import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.List;
 import java.util.Locale;
@@ -13,8 +11,11 @@ import java.util.Locale;
 import com.mycompany.salaoproject.DAO.ComparecimentoDAO;
 import com.mycompany.salaoproject.DAO.HelperDAO;
 import com.mycompany.salaoproject.DAO.DespesaDAO;
+import com.mycompany.salaoproject.DAO.FluxoCaixaDAO;
 import com.mycompany.salaoproject.models.Comparecimento;
 import com.mycompany.salaoproject.models.Despesa;
+import com.mycompany.salaoproject.models.ItemModel;
+
 
 
 import javafx.collections.FXCollections;
@@ -24,6 +25,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.ChoiceBox;
 
 public class Tela_DashController {
 
@@ -33,10 +35,16 @@ public class Tela_DashController {
     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
+    @FXML
+    private BarChart<String, Number> barChartLucro;
+
+
+    
 
 
 
     public void initialize() {
+        createMonthlyProfitChart();
         geraComparecimentoChart();
         geraDespesaChart();
     }
@@ -70,7 +78,6 @@ public class Tela_DashController {
             barChart.getYAxis().setLabel("Número de Comparecimentos");
 
             NumberAxis yAxis = new NumberAxis();
-
 
             if (yAxis != null) {
                 yAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(yAxis) {
@@ -118,6 +125,40 @@ public class Tela_DashController {
     
             barChartDespesas.getData().add(seriesDespesas);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createMonthlyProfitChart() {
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        BarChart<String, Number> chartLucro = new BarChart<>(xAxis, yAxis);
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Monthly Profit");
+    
+        FluxoCaixaDAO fluxoCaixaDAO = new FluxoCaixaDAO(HelperDAO.getInstance());
+    
+        try {
+            ResultSet resultSet = fluxoCaixaDAO.getMonthlyProfit();
+    
+            while (resultSet.next()) {
+                String yearMonth = resultSet.getString("year") + "-" + resultSet.getString("month");
+                double profit = resultSet.getDouble("profit");
+                series.getData().add(new XYChart.Data<>(yearMonth, profit));
+            }
+    
+            chartLucro.getData().add(series);
+    
+            barChartLucro.getData().clear();
+
+            barChartLucro.setLegendVisible(false);
+            barChartLucro.getXAxis().setLabel("Ano-Mês");
+            barChartLucro.getYAxis().setLabel("Lucro R$");
+    
+            for (XYChart.Series<String, Number> dataSeries : chartLucro.getData()) {
+                barChartLucro.getData().add(dataSeries);
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

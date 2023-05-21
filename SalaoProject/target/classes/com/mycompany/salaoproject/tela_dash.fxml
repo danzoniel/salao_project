@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.collections.FXCollections?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="549.0" minWidth="640.0" prefHeight="549.0" prefWidth="747.0" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.salaoproject.Tela_DashController">
    <children>
@@ -41,7 +42,8 @@
                            <children>
                               <Pane prefHeight="117.0" prefWidth="185.0" styleClass="my-pane">
                                  <children>
-                                    <ChoiceBox layoutX="27.0" layoutY="78.0" prefWidth="150.0" />
+                                    <ChoiceBox fx:id="cb" layoutX="27.0" layoutY="78.0" prefWidth="150.0">
+                                    </ChoiceBox>
                                     <Label layoutX="102.0" layoutY="55.0" text="Periodicidade" />
                                  </children>
                               </Pane>
@@ -119,14 +121,14 @@
                            </rowConstraints>
                            <children>
                               <Label text="Lucro (R$) -" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                              <LineChart fx:id="lineChart" GridPane.rowIndex="1">
+                              <BarChart  fx:id="barChartLucro" GridPane.rowIndex="1">
                                  <xAxis>
-                                    <CategoryAxis side="BOTTOM" />
+                                    <CategoryAxis fx:id="xAxisLucro" side="BOTTOM" />
                                  </xAxis>
                                  <yAxis>
                                     <NumberAxis side="LEFT" />
                                  </yAxis>
-                              </LineChart>
+                              </BarChart>
                            </children>
                         </GridPane>
                      </children>

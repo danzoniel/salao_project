@@ -23,7 +23,6 @@ public class ComparecimentoDAO {
             if (resultSet.next()) {
                 comparecimento = new Comparecimento(
                     resultSet.getInt("id_comparecimento"),
-                    resultSet.getInt("id_agendamento"),
                     resultSet.getString("email_cliente"),
                     resultSet.getTimestamp("data_agendamento")
                 );
@@ -40,7 +39,6 @@ public class ComparecimentoDAO {
             while (resultSet.next()) {
                 Comparecimento comparecimento = new Comparecimento(
                     resultSet.getInt("id_comparecimento"),
-                    resultSet.getInt("id_agendamento"),
                     resultSet.getString("email_cliente"),
                     resultSet.getTimestamp("data_agendamento")
                 );

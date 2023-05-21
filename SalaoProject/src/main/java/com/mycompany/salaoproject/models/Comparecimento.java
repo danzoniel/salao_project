@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 public class Comparecimento {
     private int id_comparecimento;
-    private int id_agendamento;
     private String email_cliente;
     private Timestamp data_agendamento;
 
@@ -12,9 +11,8 @@ public class Comparecimento {
     public Comparecimento() {
     }
     
-    public Comparecimento(int id_comparecimento, int id_agendamento, String email_cliente, Timestamp data_agendamento) {
+    public Comparecimento(int id_comparecimento, String email_cliente, Timestamp data_agendamento) {
         this.id_comparecimento = id_comparecimento;
-        this.id_agendamento = id_agendamento;
         this.email_cliente = email_cliente;
         this.data_agendamento = data_agendamento;
     }
@@ -27,13 +25,6 @@ public class Comparecimento {
         this.id_comparecimento = id_comparecimento;
     }
 
-    public int getId_agendamento() {
-        return id_agendamento;
-    }
-
-    public void setId_agendamento(int id_agendamento) {
-        this.id_agendamento = id_agendamento;
-    }
 
     public String getEmail_cliente() {
         return email_cliente;
