@@ -81,8 +81,8 @@ public class FunctionDAO {
         }
     }
 
-    public void deleteFromDb(String condition) throws SQLException {
-        String query = "DELETE FROM " + System.getProperty("TABELADB") + " WHERE " + condition;
+    public void deleteFromDb(String condition, String tabela) throws SQLException {
+        String query = "DELETE FROM " + tabela + " WHERE " + condition;
 
         try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
             statement.executeUpdate();

@@ -60,14 +60,12 @@ public class Despesa {
         this.dataSaida = dataSaida;
     }
 
-    // Example implementation of getData() method
     public String getData() {
         LocalDate data = dataSaida.toLocalDateTime().toLocalDate();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy", new Locale("pt", "BR"));
         return data.format(formatter);
     }
 
-    // Example implementation of getValor() method
     public double getValor() {
         return quantidade * precoUnitario;
     }
