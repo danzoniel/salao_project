@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="549.0" minWidth="640.0" prefHeight="549.0" prefWidth="747.0" styleClass="anchor-pane-bd" stylesheets="@css/telas_crud.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="549.0" minWidth="640.0" prefHeight="549.0" prefWidth="747.0" styleClass="anchor-pane-bd" stylesheets="@css/telas_crud.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.salaoproject.CadastraServicosController">
    <children>
       <GridPane layoutY="57.0" prefHeight="549.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -22,9 +22,10 @@
         <rowConstraints>
           <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="123.0" />
-          <RowConstraints maxHeight="152.0" minHeight="64.0" prefHeight="69.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="171.0" minHeight="67.0" prefHeight="71.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="164.0" minHeight="80.0" prefHeight="151.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="152.0" minHeight="31.0" prefHeight="44.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="152.0" minHeight="61.0" prefHeight="94.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="171.0" minHeight="47.0" prefHeight="69.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="164.0" minHeight="74.0" prefHeight="89.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
         </rowConstraints>
                          <AnchorPane maxHeight="200.0" prefHeight="200.0" prefWidth="200.0" GridPane.hgrow="NEVER">
@@ -32,7 +33,7 @@
                   <fx:include maxHeight="30.0" prefHeight="30.0" source="menu.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-         <Button maxWidth="200.0" minWidth="150.0" mnemonicParsing="false" prefWidth="200.0" styleClass="loginButton" text="cadastrar serviço" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+         <Button maxWidth="200.0" minWidth="150.0" mnemonicParsing="false" onMouseClicked="#cadastrarServico" prefWidth="200.0" styleClass="loginButton" text="cadastrar serviço" GridPane.halignment="CENTER" GridPane.rowIndex="6">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
@@ -46,7 +47,7 @@
                            <Insets right="10.0" />
                         </HBox.margin>
                      </Label>
-                     <Label text="Cadastrar &gt;">
+                     <Label text="Cadastro &gt;">
                         <font>
                            <Font size="36.0" />
                         </font>
@@ -60,12 +61,13 @@
                </HBox>
             </children>
          </AnchorPane>
-         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
             <children>
                <VBox prefHeight="147.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
+                     <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                      <Label text="Id" />
-                     <TextField styleClass="cadastra" />
+                     <TextField fx:id="tfId" styleClass="cadastra" />
                      <Label fx:id="lbErrorId" text="Label" textFill="RED" />
                   </children>
                </VBox>
@@ -74,12 +76,12 @@
                <Insets left="100.0" right="100.0" />
             </GridPane.margin>
          </AnchorPane>
-         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
             <children>
                <VBox layoutX="24.0" layoutY="-86.0" prefHeight="114.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <Label text="Serviços" />
-                     <TextField />
+                     <TextField fx:id="tfServico" />
                      <Label fx:id="lbErrorServicos" text="Label" textFill="RED" />
                   </children>
                </VBox>
@@ -91,12 +93,12 @@
                <Insets left="100.0" right="100.0" />
             </GridPane.margin>
          </AnchorPane>
-         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
             <children>
                <VBox layoutX="46.0" layoutY="-16.0" prefHeight="184.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <Label text="Preço" />
-                     <TextField />
+                     <TextField fx:id="tfPreco" />
                      <Label fx:id="lbErrorPreco" text="Label" textFill="RED" />
                   </children>
                </VBox>
@@ -104,6 +106,15 @@
             <GridPane.margin>
                <Insets left="100.0" right="100.0" />
             </GridPane.margin>
+         </AnchorPane>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <children>
+               <Label fx:id="lbSuccess" alignment="CENTER" layoutX="156.0" layoutY="42.0" text="Label" textFill="#1ab25e" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+               </Label>
+            </children>
          </AnchorPane>
       </GridPane>
    </children>

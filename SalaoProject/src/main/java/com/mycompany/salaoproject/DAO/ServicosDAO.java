@@ -47,5 +47,36 @@ public class ServicosDAO {
     }
     return servicos;
 }
+
+public void cadastrarServico(Servicos servico) throws SQLException {
+    String query = "INSERT INTO servicos_disponiveis (descricao_servico, preco) VALUES (?, ?)";
+    try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+        statement.setString(1, servico.getServico());
+        statement.setDouble(2, servico.getPreco());
+        statement.executeUpdate();
+
+        try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                int generatedId = generatedKeys.getInt(1);
+                servico.setIdServico(generatedId);
+            } else {
+                throw new SQLException("Falha ao obter o ID gerado para o serviço.");
+            }
+        }
+    }
+}
+
+public int getNextId() throws SQLException {
+    String query = "SELECT MAX(id_servico) FROM servicos_disponiveis";
+    try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery()) {
+        if (resultSet.next()) {
+            int maxId = resultSet.getInt(1);
+            return maxId + 1;
+        } else {
+            return 1;
+        }
+    }
+}
     
 }
