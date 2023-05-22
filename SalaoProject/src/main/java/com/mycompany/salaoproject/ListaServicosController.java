@@ -144,7 +144,7 @@ tableView.getColumns().add(cAcao);
     private boolean verificarServicoAgendado(int idServico) {
         try {
             ServicosAgendadosDAO servicosAgendadosDAO = new ServicosAgendadosDAO(HelperDAO.getInstance());
-            return servicosAgendadosDAO.existeServicoAgendado(idServico);
+            return servicosAgendadosDAO.existeServicoAgendado(idServico, null);
         } catch (SQLException e) {
             e.printStackTrace();
         }

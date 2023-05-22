@@ -71,11 +71,6 @@ public class CadastraUsuarioController {
             return;
         }
 
-        // if (!isValidPassword(senha)) {
-        //     lbErrorSenha.setVisible(true);
-        //     lbErrorSenha.setText("formato de senha inválido");
-        //     return;
-        // }
 
         if (!senha.equals(confirmarSenha)) {
             lbErrorConfirmarSenha.setVisible(true);
@@ -101,11 +96,6 @@ public class CadastraUsuarioController {
         return email.matches(emailRegex);
     }
 
-    // private boolean isValidPassword(String senha) {
-    // String passwordRegex = "^(?=.*[!@#$%^&*])(?=.{4,})";
-
-    // return senha.matches(passwordRegex);
-    // }
 
     private void updateButtonState() {
         String email = tfEmail.getText();

@@ -111,7 +111,6 @@ public class ListaUsuariosController {
                 atualizarTabela(tfFilter.getText());
             } catch (SQLException e) {
                 e.printStackTrace();
-                // Lógica de tratamento de erro, se necessário
             }
         }
     }

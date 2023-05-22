@@ -3,6 +3,8 @@ package com.mycompany.salaoproject.DAO;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.mycompany.salaoproject.models.Agendamento;
 import com.mycompany.salaoproject.models.Comparecimento;
 
 
@@ -46,6 +48,21 @@ public class ComparecimentoDAO {
             }
         }
         return comparecimentos;
+    }
+
+    public boolean existeComparecimento(Agendamento agendamento) throws SQLException {
+        String query = "SELECT COUNT(*) FROM comparecimento WHERE email_cliente = ? AND data_agendamento = ?";
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
+            statement.setString(1, agendamento.getEmailCliente());
+            statement.setDate(2, agendamento.getDataAgendamento());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        }
+        return false;
     }
     
 }

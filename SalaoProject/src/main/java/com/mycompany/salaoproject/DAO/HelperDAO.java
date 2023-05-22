@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
- */
 package com.mycompany.salaoproject.DAO;
 
 /**
@@ -46,14 +42,12 @@ public class HelperDAO {
         }
     }
 
-    // método para desconectar do banco de dados MySQL
     public void disconnect() throws SQLException {
         if (jdbcConnection != null && !jdbcConnection.isClosed()) {
             jdbcConnection.close();
         }
     }
 
-    // método para obter uma conexão ativa com o banco de dados MySQL
     public Connection getConnection() throws SQLException {
         if (jdbcConnection == null || jdbcConnection.isClosed()) {
             connect();
