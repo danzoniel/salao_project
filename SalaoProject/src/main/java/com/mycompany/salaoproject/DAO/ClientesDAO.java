@@ -57,4 +57,30 @@ public class ClientesDAO {
         }
         return clients;
     }
+
+    public List<Clientes> getNomes(String filtro) throws SQLException {
+        List<Clientes> clientes = new ArrayList<>();
+        String query = "SELECT * FROM cliente";
+
+        if (filtro != null && !filtro.isEmpty()) {
+            query += " WHERE nome LIKE ?";
+        }
+
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
+            if (filtro != null && !filtro.isEmpty()) {
+                statement.setString(1, "%" + filtro + "%");
+            }   
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Clientes cliente = new Clientes(
+                        resultSet.getString("email"),
+                        resultSet.getString("nome")
+                    );
+                    clientes.add(cliente);
+            }   }
+        }
+        return clientes;
+    }
+
 }
