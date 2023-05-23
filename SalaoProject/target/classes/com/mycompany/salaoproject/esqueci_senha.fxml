@@ -25,7 +25,8 @@
           <RowConstraints maxHeight="119.0" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="259.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="259.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="216.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="216.0" minHeight="0.0" prefHeight="55.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="216.0" minHeight="10.0" prefHeight="115.0" valignment="CENTER" vgrow="ALWAYS" />
         </rowConstraints>
@@ -40,10 +41,10 @@
                   <Font name="Montserrat Thin" size="20.0" />
                </font>
             </Label>
-            <TextField id="usernameField" fx:id="usernameField" focusTraversable="false" prefWidth="217.0" promptText="e-mail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField id="usernameField" fx:id="tfEmail" prefWidth="217.0" promptText="e-mail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label id="login_icon_label" prefWidth="28.0" styleClass="image-pass-label" stylesheets="@css/style.css" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
             <Label id="login_icon_label" prefWidth="28.0" styleClass="image-email-label" stylesheets="@css/style.css" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-            <Button id="loginButton" fx:id="loginButton" maxWidth="230.0" mnemonicParsing="false" prefWidth="230.0" stylesheets="@css/style.css" text="alterar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+            <Button id="alterarButton" fx:id="alterarButton" maxWidth="230.0" mnemonicParsing="false" onMouseClicked="#alterarButton" prefWidth="230.0" stylesheets="@css/style.css" text="alterar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -60,7 +61,12 @@
                   <Insets right="5.0" top="5.0" />
                </GridPane.margin>
             </Label>
-            <PasswordField id="passwordField" fx:id="passwordField" prefWidth="217.0" promptText="senha" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <PasswordField id="passwordField" fx:id="tfSenha" focusTraversable="false" prefWidth="217.0" promptText="senha" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <PasswordField id="passwordField" fx:id="tfConfirmarSenha" focusTraversable="false" prefWidth="217.0" promptText="confirmar senha" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label id="login_icon_label" prefWidth="28.0" styleClass="image-pass-label" stylesheets="@css/style.css" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <Label fx:id="lbErrorEmail" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <Label fx:id="lbErrorSenha" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <Label fx:id="lbErrorConfirmarSenha" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP" />
          </children>
       </GridPane>
    </children>

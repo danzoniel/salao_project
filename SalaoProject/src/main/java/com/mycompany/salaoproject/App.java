@@ -7,9 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class App extends Application {
@@ -19,7 +16,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
     
-        Image icon = new Image("https://www.pinclipart.com/picdir/middle/187-1874171_scars-clipart.png"); // Replace "icon.png" with the path to your icon image file
+        Image icon = new Image("https://www.pinclipart.com/picdir/middle/187-1874171_scars-clipart.png");
 
         int iconWidth = 64;
         int iconHeight = 64;
@@ -38,17 +35,12 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        System.out.println(fxml);
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("telalogin.fxml"));
         return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
-        // try {
-        //     DBconnection.getConnection();
-        //     System.out.println("database connected succefully");
-        // } catch (ClassNotFoundException | SQLException ex) {
-        //     Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        // }
         launch();
     }
 }

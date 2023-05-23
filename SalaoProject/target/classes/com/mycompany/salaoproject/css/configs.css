@@ -1,0 +1,64 @@
+.my-hbox {
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+
+.my-hbox .child {
+    -fx-margin: 5px;
+}
+
+.servicos-icon {
+    -fx-background-image: url('../assets/servicos.png');
+    -fx-background-size: 82px 82px;
+    -fx-background-position: center;
+    -fx-min-width: 82px;
+    -fx-min-height: 82px;
+    -fx-max-width: 82px;
+    -fx-max-height: 82px;
+    -fx-margin: 0 5% 0 0;
+}
+
+.admins-icon {
+    -fx-background-image: url('../assets/admins.png');
+    -fx-background-size: 82px 82px;
+    -fx-background-position: center;
+    -fx-min-width: 82px;
+    -fx-min-height: 82px;
+    -fx-max-width: 82px;
+    -fx-max-height: 82px;
+    -fx-margin: 0 5% 0 0;
+}
+
+.agendamentos-icon {
+    -fx-background-image: url('../assets/agendamentos.png');
+    -fx-background-size: 82px 82px;
+    -fx-background-position: center;
+    -fx-min-width: 82px;
+    -fx-min-height: 82px;
+    -fx-max-width: 82px;
+    -fx-max-height: 82px;
+    -fx-margin: 0 5% 0 0;
+}
+
+.despesas-icon {
+    -fx-background-image: url('../assets/despesas.png');
+    -fx-background-size: 82px 82px;
+    -fx-background-position: center;
+    -fx-min-width: 82px;
+    -fx-min-height: 82px;
+    -fx-max-width: 82px;
+    -fx-max-height: 82px;
+    -fx-margin: 0 5% 0 0;
+}
+
+
+.clientes-icon {
+    -fx-background-image: url('../assets/clientesv3.png');
+    -fx-background-size: 82px 82px;
+    -fx-background-position: center;
+    -fx-min-width: 82px;
+    -fx-min-height: 82px;
+    -fx-max-width: 82px;
+    -fx-max-height: 82px;
+    -fx-margin: 0 5% 0 0;
+}

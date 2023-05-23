@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
- */
 package com.mycompany.salaoproject.DAO;
 
 /**
@@ -16,13 +12,25 @@ public class HelperDAO {
     private String jdbcPassword;
     private Connection jdbcConnection;
 
+    private static HelperDAO instance;
+
     public HelperDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) {
         this.jdbcURL = jdbcURL;
         this.jdbcUsername = jdbcUsername;
         this.jdbcPassword = jdbcPassword;
     }
 
-    // método para conectar ao banco de dados MySQL
+    public static HelperDAO getInstance() {
+        if (instance == null) {
+            String jdbcURL = "jdbc:mysql://localhost:3306/salao_db";
+            String jdbcUsername = "myuser";
+            String jdbcPassword = "mypassword";
+            
+            instance = new HelperDAO(jdbcURL, jdbcUsername, jdbcPassword);
+        }
+        return instance;
+    }
+
     public void connect() throws SQLException {
         if (jdbcConnection == null || jdbcConnection.isClosed()) {
             try {
@@ -34,14 +42,12 @@ public class HelperDAO {
         }
     }
 
-    // método para desconectar do banco de dados MySQL
     public void disconnect() throws SQLException {
         if (jdbcConnection != null && !jdbcConnection.isClosed()) {
             jdbcConnection.close();
         }
     }
 
-    // método para obter uma conexão ativa com o banco de dados MySQL
     public Connection getConnection() throws SQLException {
         if (jdbcConnection == null || jdbcConnection.isClosed()) {
             connect();
