@@ -84,6 +84,8 @@
            <columns>
              <TableColumn fx:id="cNome" prefWidth="75.0" text="Nome" />
              <TableColumn fx:id="cEmail" prefWidth="75.0" text="Email" />
+             <TableColumn fx:id="cFrequencia" prefWidth="75.0" text="Frequência" />
+             <TableColumn fx:id="cCupom" prefWidth="75.0" text="Cupom" />
            </columns>
             <opaqueInsets>
                <Insets left="30.0" right="30.0" />

@@ -12,22 +12,14 @@ public class ClientesDAO {
         this.helperDAO = helperDAO;
     }
 
-    // método para obter um usuário específico do banco de dados
-    // public Clientes getEmail(String clienteEmail) throws SQLException {
-    //     Usuario usuario = null;
-    //     String query = "SELECT * FROM cliente WHERE email = ?";
-    //     try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
-    //         statement.setString(1, usuarioEmail);
-    //         ResultSet resultSet = statement.executeQuery();
-    //         if (resultSet.next()) {
-    //             usuario = new Usuario(
-    //                 resultSet.getString("email"),
-    //                 resultSet.getString("senha")
-    //             );
-    //         }
-    //     }
-    //     return usuario;
-    // }
+    public void addCliente(Clientes cliente) throws SQLException {
+        String query = "INSERT INTO cliente (email, nome) VALUES (?, ?)";
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
+            statement.setString(1, cliente.getEmail());
+            statement.setString(2, cliente.getNome());
+            statement.executeUpdate();
+        }
+    }
 
     public List<String> getEmailString() throws SQLException {
         List<String> emails = new ArrayList<>();

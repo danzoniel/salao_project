@@ -59,14 +59,7 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-        System.setProperty("URLDB", "jdbc:mysql://localhost:3306/salao_db");
-        System.setProperty("USERDB", "myuser");
-        System.setProperty("PASSDB", "mypassword");
-        System.setProperty("TABELADB", "default");
 
-        // loginButton.disableProperty().bind(usernameField.textProperty().isEmpty().or(passwordField.textProperty().isEmpty()));
-        // formatoInvalidoLabel.setVisible(false);
-        // senhaIncorretaLabel.setVisible(false);
     }
 
     private UsuarioDAO usuarioDAO;

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.mycompany.salaoproject.DAO.ClientesDAO;
 import com.mycompany.salaoproject.DAO.HelperDAO;
+import com.mycompany.salaoproject.DAO.ComparecimentoDAO;
 import com.mycompany.salaoproject.models.Clientes;
 
 import javafx.fxml.FXML;
@@ -27,6 +28,12 @@ public class ListaClientesController {
     private TableColumn<Clientes, String> cNome;
 
     @FXML
+    private TableColumn<Clientes, Integer> cFrequencia;
+
+    @FXML
+    private TableColumn<Clientes, String> cCupom;
+
+    @FXML
     private TextField tfNome;
 
     @FXML 
@@ -37,16 +44,26 @@ public class ListaClientesController {
 
 
 
-    @FXML
     public void initialize() {
 
         ClientesDAO clientesDAO = new ClientesDAO(HelperDAO.getInstance());
+        ComparecimentoDAO comparecimentoDAO = new ComparecimentoDAO(HelperDAO.getInstance());
 
         cEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         cNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        cFrequencia.setCellValueFactory(new PropertyValueFactory<>("frequencia"));
+        cCupom.setCellValueFactory(new PropertyValueFactory<>("cupom"));
 
         try {
-            tableView.getItems().addAll(clientesDAO.getClientes());
+            List<Clientes> clientes = clientesDAO.getClientes();
+
+            for (Clientes cliente : clientes) {
+                int frequencia = comparecimentoDAO.contarComparecimentosPorEmail(cliente.getEmail());
+                cliente.setFrequencia(frequencia);
+                cliente.setCupom(frequencia >= 2 ? "sim" : "não");
+            }
+
+            tableView.getItems().addAll(clientes);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -64,7 +81,6 @@ public class ListaClientesController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     private void atualizarTabela(String filtro) throws SQLException {

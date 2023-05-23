@@ -1,6 +1,7 @@
 package com.mycompany.salaoproject;
 
 import com.mycompany.salaoproject.DAO.DespesaDAO;
+import com.mycompany.salaoproject.DAO.FluxoCaixaDAO;
 import com.mycompany.salaoproject.DAO.HelperDAO;
 import com.mycompany.salaoproject.models.Despesa;
 import javafx.fxml.FXML;
@@ -13,12 +14,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class CadastraDespesaController {
 
@@ -48,12 +46,14 @@ public class CadastraDespesaController {
 
     private DespesaDAO despesaDAO;
 
+    private FluxoCaixaDAO fluxoCaixaDAO;
+
     public CadastraDespesaController() {
         despesaDAO = new DespesaDAO(HelperDAO.getInstance());
+        fluxoCaixaDAO = new FluxoCaixaDAO(HelperDAO.getInstance());
     }
 
     public void initialize() throws SQLException {
-        despesaDAO = new DespesaDAO(HelperDAO.getInstance());
         clearErrorLabels();
 
         int nextId = despesaDAO.getNextId();
@@ -94,6 +94,7 @@ public class CadastraDespesaController {
 
 
                 despesaDAO.addDespesa(despesa);
+                fluxoCaixaDAO.addFluxoCaixaDespesa(despesa);
 
                 clearFields();
                 showMessage("Agendamento criado com sucesso!", Color.GREEN);

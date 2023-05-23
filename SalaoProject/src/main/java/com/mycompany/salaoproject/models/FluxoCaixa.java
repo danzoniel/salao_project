@@ -1,5 +1,7 @@
 package com.mycompany.salaoproject.models;
 
+import java.time.LocalDate;
+
 public class FluxoCaixa {
     private int idFluxo;
     private int idDespesa;
@@ -7,6 +9,7 @@ public class FluxoCaixa {
     private String email;
     private double valorMovimentadoSaida;
     private double valorMovimentadoEntrada;
+    private LocalDate dataMovimentacao;
 
 
     public int getIdFluxo() {
@@ -55,5 +58,13 @@ public class FluxoCaixa {
 
     public void setValorMovimentadoEntrada(double valorMovimentadoEntrada) {
         this.valorMovimentadoEntrada = valorMovimentadoEntrada;
+    }
+
+    public LocalDate getDataMovimentacao() {
+        return dataMovimentacao;
+    }
+
+    public void setDataMovimentacao(LocalDate dataMovimentacao) {
+        this.dataMovimentacao = dataMovimentacao;
     }
 }

@@ -62,12 +62,15 @@ id_comparecimento int,
 email varchar(50),
 valor_movimentado_saida DOUBLE,
 valor_movimentado_entrada DOUBLE,
+data_movimentacao date,
 PRIMARY KEY (id_fluxo),
 FOREIGN KEY (id_comparecimento, email) REFERENCES comparecimento (id_comparecimento, email_cliente),
 FOREIGN KEY (id_despesa) REFERENCES despesa (id_despesa)
 );
 
 insert into usuario_admin(email, senha) values ("salao@gmail.com", "admin");
+
+
 
 insert into cliente(email, nome) values ("fulana1@gmail.com","fulana1");
 insert into cliente(email, nome) values ("fulana2@gmail.com","fulana2");

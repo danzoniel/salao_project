@@ -9,14 +9,16 @@ import java.time.format.TextStyle;
 import java.util.List;
 import java.util.Locale;
 
+import com.mycompany.salaoproject.DAO.AgendamentoDAO;
 import com.mycompany.salaoproject.DAO.ComparecimentoDAO;
 import com.mycompany.salaoproject.DAO.HelperDAO;
+import com.mycompany.salaoproject.DAO.ServicosAgendadosDAO;
 import com.mycompany.salaoproject.DAO.DespesaDAO;
 import com.mycompany.salaoproject.DAO.FluxoCaixaDAO;
 import com.mycompany.salaoproject.models.Comparecimento;
+import com.mycompany.salaoproject.models.ComparecimentoHandler;
 import com.mycompany.salaoproject.models.Despesa;
-
-
+import com.mycompany.salaoproject.models.FluxoCaixa;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,11 +49,39 @@ public class Tela_DashController {
     FluxoCaixaDAO fluxoCaixaDAO;
 
     public void initialize() throws SQLException {
+        AgendamentoDAO agendamentoDAO = new AgendamentoDAO(HelperDAO.getInstance());
+        ComparecimentoDAO comparecimentoDAO = new ComparecimentoDAO(HelperDAO.getInstance());
+        ComparecimentoHandler comparecimento = new ComparecimentoHandler(agendamentoDAO, comparecimentoDAO);
+        fluxoCaixaDAO = new FluxoCaixaDAO(HelperDAO.getInstance());
+
+        comparecimento.verificarComparecimentos();
         createMonthlyProfitChart();
         alteraLabelChart();
         geraComparecimentoChart();
         geraDespesaChart();
     }
+
+    public void addFluxoCaixaComparecimento(Comparecimento comparecimento, double valorMovimentadoEntrada, LocalDate dataMovimentacao) {
+        try {
+            FluxoCaixaDAO fluxoCaixaDAO = new FluxoCaixaDAO(HelperDAO.getInstance());
+
+            FluxoCaixa fluxoCaixa = new FluxoCaixa();
+            // fluxoCaixa.setIdDespesa(0);
+            fluxoCaixa.setIdComparecimento(comparecimento.getId_comparecimento());
+            System.out.println(comparecimento.getId_comparecimento());
+            fluxoCaixa.setEmail(comparecimento.getEmail_cliente());
+            System.out.println(comparecimento.getEmail_cliente());
+            fluxoCaixa.setValorMovimentadoSaida(0);
+            fluxoCaixa.setValorMovimentadoEntrada(valorMovimentadoEntrada);
+            fluxoCaixa.setDataMovimentacao(dataMovimentacao);
+
+            fluxoCaixaDAO.inserirFluxoCaixa(fluxoCaixa);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
 
     private void geraComparecimentoChart() {
     

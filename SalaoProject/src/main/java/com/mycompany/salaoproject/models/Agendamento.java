@@ -19,7 +19,6 @@ public class Agendamento {
     private SimpleObjectProperty<Time> horaAgendamento;
     private List<Servicos> servicos;
 
-    // private ListProperty<Servicos> servicosProperty;
     private StringProperty servicosString;
 
     public Agendamento() {
@@ -36,17 +35,7 @@ public class Agendamento {
         this.horaAgendamento = new SimpleObjectProperty<>(horaAgendamento);
     }
 
-    // public List<Servicos> getServicos() {
-    //     return servicosProperty.get();
-    // }
 
-    // public void setServicos(List<Servicos> servicos) {
-    //     servicosProperty.set(FXCollections.observableArrayList(servicos));
-    // }
-
-    // public ListProperty<Servicos> servicosProperty() {
-    //     return servicosProperty;
-    // }
 
     public String getEmailCliente() {
         return emailCliente.get();

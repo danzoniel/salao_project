@@ -25,14 +25,6 @@ public class UsuarioDAO {
         }
     }
 
-    public void updateUsuario(Usuario usuario) throws SQLException {
-        String query = "UPDATE usuario_admin SET senha=? WHERE email=?";
-        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
-            statement.setString(1, usuario.getSenha());
-            statement.setString(2, usuario.getEmail());
-            statement.executeUpdate();
-        }
-    }
 
     public void excluirUsuario(Usuario usuario) throws SQLException {
         String query = "DELETE FROM usuario_admin WHERE email=?";
@@ -83,6 +75,18 @@ public class UsuarioDAO {
             }
         }
         return usuarios;
+    }
+
+    public void atualizarSenha(String novaSenha, String email) throws SQLException {
+        String query = "UPDATE usuario_admin SET senha = ? WHERE email = ?";
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
+            statement.setString(1, novaSenha);
+            statement.setString(2, email);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("não foi possível atualizar a senha");
+        }
+
     }
     
 }

@@ -1,13 +1,15 @@
 package com.mycompany.salaoproject.models;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+
+
 
 public class Comparecimento {
     private int id_comparecimento;
     private String email_cliente;
     private Timestamp data_agendamento;
 
-    
     public Comparecimento() {
     }
     
@@ -17,6 +19,11 @@ public class Comparecimento {
         this.data_agendamento = data_agendamento;
     }
     
+    public Comparecimento(String emailCliente, Date dataAgendamento) {
+        this.email_cliente = emailCliente;
+        this.data_agendamento = new Timestamp(dataAgendamento.getTime());
+    }
+
     public int getId_comparecimento() {
         return id_comparecimento;
     }

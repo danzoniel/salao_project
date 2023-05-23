@@ -38,11 +38,8 @@ public class AgendamentoDAO {
     public void excluirAgendamento(Agendamento agendamento) throws SQLException {
         ServicosAgendadosDAO servicosAgendadosDAO = new ServicosAgendadosDAO(helperDAO);
 
-        System.out.println(agendamento.getEmailCliente());
-        System.out.println(agendamento.getDataAgendamento());
+  
         servicosAgendadosDAO.removerServicosAgendadosPorAgendamento(agendamento);
-        System.out.println(agendamento.getEmailCliente());
-        System.out.println(agendamento.getDataAgendamento());
 
         String sql = "DELETE FROM agendamento WHERE email_cliente = ? AND data_agendamento = ?";
         try (Connection connection = helperDAO.getConnection();
