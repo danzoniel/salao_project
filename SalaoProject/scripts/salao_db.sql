@@ -110,5 +110,5 @@ insert into servicos_agendados(id_servico_agendado, id_servico, email_cliente, d
 insert into servicos_agendados(id_servico_agendado, id_servico, email_cliente, data_agendamento) values (4, 3, "fulana3@gmail.com", "2023-05-25");
 insert into servicos_agendados(id_servico_agendado, id_servico, email_cliente, data_agendamento) values (4, 2, "fulana3@gmail.com", "2023-01-25");
 
-INSERT INTO fluxo_caixa (id_fluxo, id_despesa, id_comparecimento, email, valor_movimentado_saida, valor_movimentado_entrada) VALUES (1, 1, NULL, NULL, 50.00, 0);
-INSERT INTO fluxo_caixa (id_fluxo, id_despesa, id_comparecimento, email, valor_movimentado_saida, valor_movimentado_entrada) VALUES (2, NULL, 1, "fulana1@gmail.com", 0, 105.00);
+INSERT INTO fluxo_caixa (id_fluxo, id_despesa, id_comparecimento, email, valor_movimentado_saida, valor_movimentado_entrada, data_movimentacao) VALUES (1, 1, NULL, NULL, 50.00, 0, "2023-05-23");
+INSERT INTO fluxo_caixa (id_fluxo, id_despesa, id_comparecimento, email, valor_movimentado_saida, valor_movimentado_entrada, data_movimentacao) VALUES (2, NULL, 1, "fulana1@gmail.com", 0, 105.00, "2023-03-23");

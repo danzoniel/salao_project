@@ -93,9 +93,6 @@
                    <TableColumn fx:id="cEmail" prefWidth="75.0" text="E-mail" />
                    <TableColumn fx:id="cData" prefWidth="75.0" text="Data" />
                    <TableColumn fx:id="cHora" prefWidth="75.0" text="Hora" />
-                   <TableColumn fx:id="cServicos" prefWidth="75.0" text="Serviços" />
-                   <TableColumn fx:id="cDesconto" prefWidth="75.0" text="Desconto" />
-                   <TableColumn fx:id="cValorTot" prefWidth="75.0" text="Valor Total" />
                  </columns>
                </TableView>
             </children>
