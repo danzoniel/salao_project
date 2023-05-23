@@ -54,5 +54,7 @@ public class EsqueciSenhaController {
     currentStage.setScene(newScene);
     
     }
+
+   
     
 }

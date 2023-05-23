@@ -49,8 +49,7 @@ public class ListaUsuariosController {
 
     @FXML
     public void initialize() {
-        cEmail.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
-
+        carregaUsuarios();
         tfFilter.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 atualizarTabela(newValue);
@@ -64,6 +63,10 @@ public class ListaUsuariosController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void carregaUsuarios() {
+        cEmail.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
     }
 
     private void atualizarTabela(String filtro) throws SQLException {

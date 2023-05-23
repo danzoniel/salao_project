@@ -12,6 +12,8 @@ public class ServicosDAO {
     public ServicosDAO(HelperDAO helperDAO) {
         this.helperDAO = helperDAO;
     }
+
+
     
     public void excluirServico(Servicos servico) throws SQLException {
         String query = "DELETE FROM servicos_disponiveis WHERE id_servico = ?";
@@ -19,6 +21,19 @@ public class ServicosDAO {
             statement.setInt(1, servico.getIdServico());
             statement.executeUpdate();
         }
+    }
+
+    public List<String> getServicosString() throws SQLException {
+        List<String> servicos = new ArrayList<>();
+        String query = "SELECT descricao_servico FROM servicos_disponiveis";
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                String servico = resultSet.getString("descricao_servico");
+                servicos.add(servico);
+            }
+        }
+        return servicos;
     }
 
     public List<Servicos> getServicos(String filtro) throws SQLException {

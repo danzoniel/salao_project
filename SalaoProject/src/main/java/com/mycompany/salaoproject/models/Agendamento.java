@@ -1,20 +1,33 @@
 package com.mycompany.salaoproject.models;
 
+import com.mycompany.salaoproject.models.Servicos;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Agendamento {
     private SimpleStringProperty emailCliente;
     private SimpleObjectProperty<Date> dataAgendamento;
     private SimpleObjectProperty<Time> horaAgendamento;
+    private List<Servicos> servicos;
+
+    // private ListProperty<Servicos> servicosProperty;
+    private StringProperty servicosString;
 
     public Agendamento() {
+        this.servicos = new ArrayList<>();
         this.emailCliente = new SimpleStringProperty();
         this.dataAgendamento = new SimpleObjectProperty<>();
         this.horaAgendamento = new SimpleObjectProperty<>();
+        this.servicosString = new SimpleStringProperty();
     }
 
     public Agendamento(String emailCliente, Date dataAgendamento, Time horaAgendamento) {
@@ -22,6 +35,18 @@ public class Agendamento {
         this.dataAgendamento = new SimpleObjectProperty<>(dataAgendamento);
         this.horaAgendamento = new SimpleObjectProperty<>(horaAgendamento);
     }
+
+    // public List<Servicos> getServicos() {
+    //     return servicosProperty.get();
+    // }
+
+    // public void setServicos(List<Servicos> servicos) {
+    //     servicosProperty.set(FXCollections.observableArrayList(servicos));
+    // }
+
+    // public ListProperty<Servicos> servicosProperty() {
+    //     return servicosProperty;
+    // }
 
     public String getEmailCliente() {
         return emailCliente.get();
@@ -57,6 +82,26 @@ public class Agendamento {
 
     public SimpleObjectProperty<Time> horaAgendamentoProperty() {
         return horaAgendamento;
+    }
+
+
+    public String getServicosString() {
+        if (servicos != null) {
+        StringBuilder sb = new StringBuilder();
+        for (Servicos servico : servicos) {
+            sb.append(servico.getServico()).append(", ");
+        }
+        if (sb.length() > 2) {
+            sb.setLength(sb.length() - 2);
+        }
+        return sb.toString();
+        }
+        return "";   
+    }
+
+    public StringProperty servicosStringProperty() {
+        servicosString.set(getServicosString());
+        return servicosString;
     }
 
 }

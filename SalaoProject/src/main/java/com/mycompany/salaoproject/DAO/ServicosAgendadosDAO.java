@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mycompany.salaoproject.models.Agendamento;
+import com.mycompany.salaoproject.models.Servicos;
 
 public class ServicosAgendadosDAO {
 
@@ -12,6 +13,17 @@ public class ServicosAgendadosDAO {
 
     public ServicosAgendadosDAO(HelperDAO helperDAO) {
         this.helperDAO = helperDAO;
+    }
+
+
+    public void addServicoAgendado(Servicos servicos, Agendamento agendamento) throws SQLException {
+        String query = "INSERT INTO servicos_agendados (id_servico, email_cliente, data_agendamento) VALUES (?, ?, ?)";
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query)) {
+            statement.setInt(1, servicos.getIdServico());
+            statement.setString(2, agendamento.getEmailCliente());
+            statement.setDate(3, agendamento.getDataAgendamento());
+            statement.executeUpdate();
+        }
     }
 
     public void removerServicosAgendadosPorIdServico(int idServico) throws SQLException {

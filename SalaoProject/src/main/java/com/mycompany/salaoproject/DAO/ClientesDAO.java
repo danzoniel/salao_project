@@ -29,8 +29,19 @@ public class ClientesDAO {
     //     return usuario;
     // }
 
+    public List<String> getEmailString() throws SQLException {
+        List<String> emails = new ArrayList<>();
+        String query = "SELECT * FROM cliente";
+        try (PreparedStatement statement = helperDAO.getConnection().prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                String email = resultSet.getString("email");
+                emails.add(email);
+            }
+        }
+        return emails;
+    }
 
-    // método para obter todos os usuários do banco de dados
     public List<Clientes> getClientes() throws SQLException {
         List<Clientes> clients = new ArrayList<>();
         String query = "SELECT * FROM cliente";

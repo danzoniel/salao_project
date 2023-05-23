@@ -12,6 +12,8 @@ import java.sql.Time;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,6 +26,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 public class ListaAgendamentoController  {
@@ -41,6 +44,9 @@ public class ListaAgendamentoController  {
     private TextField tfFilter;
     @FXML
     private Button btnCadastrarAgendamento;
+    @FXML
+    private TableColumn<Agendamento, String> cServicos;
+   
 
     private AgendamentoDAO agendamentoDAO;
     private boolean colunaAcaoAdicionada = false;
@@ -52,7 +58,6 @@ public class ListaAgendamentoController  {
     @FXML
     public void initialize() {
         carregarAgendamentos();
-
         tfFilter.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 atualizarTabela(newValue);
@@ -92,7 +97,7 @@ public class ListaAgendamentoController  {
             cEmail.setCellValueFactory(cellData -> cellData.getValue().emailClienteProperty());
             cData.setCellValueFactory(cellData -> cellData.getValue().dataAgendamentoProperty());
             cHora.setCellValueFactory(cellData -> cellData.getValue().horaAgendamentoProperty());
-    
+            // cServicos.setCellValueFactory(cellData -> cellData.getValue().servicosStringProperty());
         } catch (SQLException e) {
             return;
         }

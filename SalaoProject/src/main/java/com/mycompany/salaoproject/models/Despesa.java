@@ -2,71 +2,100 @@ package com.mycompany.salaoproject.models;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Despesa {
-    private int idDespesa;
-    private String produtoDescricao;
-    private double precoUnitario;
-    private int quantidade;
-    private Timestamp dataSaida;
+    private IntegerProperty idDespesa;
+    private StringProperty produtoDescricao;
+    private DoubleProperty precoUnitario;
+    private IntegerProperty quantidade;
+    private ObjectProperty<LocalDate> dataSaida;
 
     public Despesa(int idDespesa, String produtoDescricao, double precoUnitario, int quantidade, Timestamp dataSaida) {
-        this.idDespesa = idDespesa;
-        this.produtoDescricao = produtoDescricao;
-        this.precoUnitario = precoUnitario;
-        this.quantidade = quantidade;
-        this.dataSaida = dataSaida;
+        this.idDespesa = new SimpleIntegerProperty(idDespesa);
+        this.produtoDescricao = new SimpleStringProperty(produtoDescricao);
+        this.precoUnitario = new SimpleDoubleProperty(precoUnitario);
+        this.quantidade = new SimpleIntegerProperty(quantidade);
+        this.dataSaida = new SimpleObjectProperty<>(dataSaida.toLocalDateTime().toLocalDate());
     }
 
     public int getIdDespesa() {
-        return idDespesa;
+        return idDespesa.get();
     }
 
     public void setIdDespesa(int idDespesa) {
-        this.idDespesa = idDespesa;
+        this.idDespesa.set(idDespesa);
+    }
+
+    public IntegerProperty idDespesaProperty() {
+        return idDespesa;
     }
 
     public String getProdutoDescricao() {
-        return produtoDescricao;
+        return produtoDescricao.get();
     }
 
     public void setProdutoDescricao(String produtoDescricao) {
-        this.produtoDescricao = produtoDescricao;
+        this.produtoDescricao.set(produtoDescricao);
+    }
+
+    public StringProperty produtoDescricaoProperty() {
+        return produtoDescricao;
     }
 
     public double getPrecoUnitario() {
-        return precoUnitario;
+        return precoUnitario.get();
     }
 
     public void setPrecoUnitario(double precoUnitario) {
-        this.precoUnitario = precoUnitario;
+        this.precoUnitario.set(precoUnitario);
+    }
+
+    public DoubleProperty precoUnitarioProperty() {
+        return precoUnitario;
     }
 
     public int getQuantidade() {
-        return quantidade;
+        return quantidade.get();
     }
 
     public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+        this.quantidade.set(quantidade);
     }
 
-    public Timestamp getDataSaida() {
+    public IntegerProperty quantidadeProperty() {
+        return quantidade;
+    }
+
+    public LocalDate getDataSaida() {
+        return dataSaida.get();
+    }
+
+    public void setDataSaida(LocalDate dataSaida) {
+        this.dataSaida.set(dataSaida);
+    }
+
+    public ObjectProperty<LocalDate> dataSaidaProperty() {
         return dataSaida;
     }
 
-    public void setDataSaida(Timestamp dataSaida) {
-        this.dataSaida = dataSaida;
-    }
-
     public String getData() {
-        LocalDate data = dataSaida.toLocalDateTime().toLocalDate();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy", new Locale("pt", "BR"));
-        return data.format(formatter);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", new Locale("pt", "BR"));
+        return dataSaida.get().format(formatter);
     }
 
     public double getValor() {
-        return quantidade * precoUnitario;
+        return quantidade.get() * precoUnitario.get();
     }
 }

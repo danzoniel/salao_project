@@ -2,18 +2,20 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="549.0" minWidth="640.0" prefHeight="549.0" prefWidth="747.0" styleClass="anchor-pane-bd" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="549.0" minWidth="640.0" prefHeight="549.0" prefWidth="747.0" styleClass="anchor-pane-bd" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.salaoproject.ListaDespesaController">
    <children>
       <GridPane prefHeight="549.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -32,7 +34,10 @@
                   <fx:include maxHeight="30.0" prefHeight="30.0" source="menu.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-         <Label text="Listagem Despesas" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+         <Label text="Listagem Despesas" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font></Label>
          <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="anchor-pane-filter" GridPane.rowIndex="2">
             <children>
                <GridPane layoutX="25.0" layoutY="4.0" prefHeight="81.0" prefWidth="186.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="4.0">
@@ -45,14 +50,14 @@
                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                  </rowConstraints>
                   <children>
-                     <ChoiceBox focusTraversable="false" prefWidth="150.0" GridPane.rowIndex="2" />
                      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.halignment="RIGHT">
                         <children>
                            <Label styleClass="filter-icon" />
                            <Label alignment="CENTER" text="Filtros" />
                         </children>
                      </HBox>
-                     <Label text="Periodicidade" GridPane.rowIndex="1" />
+                     <Label text="Produto" GridPane.rowIndex="1" />
+                     <TextField fx:id="tfFilter" GridPane.rowIndex="2" />
                   </children>
                </GridPane>
             </children>
@@ -63,17 +68,33 @@
                <Insets left="30.0" right="30.0" />
             </GridPane.margin>
          </AnchorPane>
-         <TableView focusTraversable="false" prefHeight="200.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
-            <GridPane.margin>
-               <Insets left="30.0" right="30.0" top="20.0" />
-            </GridPane.margin>
-         </TableView>
-         <Pagination focusTraversable="false" maxPageIndicatorCount="2" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5" />
-         <Button focusTraversable="false" mnemonicParsing="false" text="cadastrar novo serviço" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+         <Button fx:id="btnCadastrarDespesas" focusTraversable="false" maxWidth="200.0" minWidth="150.0" mnemonicParsing="false" onMouseClicked="#handleCadastrarDespesa" prefWidth="200.0" styleClass="loginButton" text="cadastrar despesa" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
             <children>
-               <Label alignment="TOP_LEFT" layoutX="72.0" layoutY="6.0" nodeOrientation="LEFT_TO_RIGHT" text="Listando registros de 1 - x de um total de x" textFill="#000000c3" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" />
+               <Label fx:id="lbCount" alignment="TOP_LEFT" layoutX="72.0" layoutY="6.0" nodeOrientation="LEFT_TO_RIGHT" text="Listando registros de 1 - x de um total de x" textFill="#000000c3" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" />
             </children>
+         </AnchorPane>
+         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <children>
+               <TableView fx:id="tableView" focusTraversable="false" layoutX="36.0" layoutY="-20.0" prefHeight="290.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                 <columns>
+                   <TableColumn fx:id="cId" prefWidth="75.0" text="Id" />
+                   <TableColumn fx:id="cProduto" prefWidth="75.0" text="Produto" />
+                   <TableColumn fx:id="cPrecoUn" prefWidth="101.0" text="Preço unitário" />
+                   <TableColumn fx:id="cQuantidade" prefWidth="72.0" text="Quantidade" />
+                   <TableColumn fx:id="cDC" prefWidth="77.0" text="Data compra" />
+                 </columns>
+               </TableView>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <GridPane.margin>
+               <Insets left="30.0" right="30.0" top="10.0" />
+            </GridPane.margin>
          </AnchorPane>
       </GridPane>
    </children>

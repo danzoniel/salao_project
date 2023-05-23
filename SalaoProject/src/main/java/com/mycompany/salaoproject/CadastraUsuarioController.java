@@ -1,11 +1,14 @@
 package com.mycompany.salaoproject;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 import java.sql.SQLException;
 
@@ -82,12 +85,35 @@ public class CadastraUsuarioController {
             Usuario usuario = new Usuario(email, senha);
 
             usuarioDAO.addUsuario(usuario);
-
-            lbSuccess.setText("Usuário cadastrado com sucesso!");
-            lbSuccess.setVisible(true);
+            showMessage("Agendamento criado com sucesso!", Color.GREEN);
+            clearFields();
         } catch (SQLException e) {
+            showMessage("Erro ao cadastrar agendamento.", Color.RED);
             e.printStackTrace();
         }
+    }
+
+    private void showMessage(String message, Color color) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setStyle("-fx-background-color: " + toRGBCode(color));
+    }
+
+    private String toRGBCode(Color color) {
+        return String.format("#%02X%02X%02X",
+                (int) (color.getRed() * 255),
+                (int) (color.getGreen() * 255),
+                (int) (color.getBlue() * 255));
+    }
+
+    private void clearFields() {
+        tfEmail.setText("");
+        tfSenha.setText("");
+        tfConfirmarSenha.setText("");
     }
 
     private boolean isValidEmail(String email) {

@@ -6,9 +6,12 @@ import com.mycompany.salaoproject.DAO.HelperDAO;
 import com.mycompany.salaoproject.DAO.ServicosDAO;
 import com.mycompany.salaoproject.models.Servicos;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 public class CadastraServicosController {
 
@@ -30,8 +33,6 @@ public class CadastraServicosController {
     @FXML
     private Label lbErrorPreco;
 
-    @FXML
-    private Label lbSuccess;
 
     private ServicosDAO servicosDAO;
 
@@ -50,7 +51,6 @@ public class CadastraServicosController {
         lbErrorId.setVisible(false);
         lbErrorServicos.setVisible(false);
         lbErrorPreco.setVisible(false);
-        lbSuccess.setVisible(false);
 
         try {
             int id;
@@ -92,9 +92,10 @@ public class CadastraServicosController {
                 try {
                     servicosDAO.cadastrarServico(novoServico);
                     System.out.println("Serviço cadastrado com sucesso!");
-                    lbSuccess.setText("Serviço cadastrado com sucesso!");
-                    lbSuccess.setVisible(true);
+                    showMessage("Agendamento criado com sucesso!", Color.GREEN);
+                    clearFields();
                 } catch (SQLException e) {
+                    showMessage("Erro ao cadastrar agendamento.", Color.RED);
                     e.printStackTrace();
                     System.out.println("Erro ao cadastrar o serviço. Por favor, tente novamente.");
                 }
@@ -103,6 +104,29 @@ public class CadastraServicosController {
             e.printStackTrace();
             System.out.println("Ocorreu um erro. Por favor, tente novamente.");
         }
+    }
+
+    private void showMessage(String message, Color color) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setStyle("-fx-background-color: " + toRGBCode(color));
+    }
+
+    private String toRGBCode(Color color) {
+        return String.format("#%02X%02X%02X",
+                (int) (color.getRed() * 255),
+                (int) (color.getGreen() * 255),
+                (int) (color.getBlue() * 255));
+    }
+
+    private void clearFields() {
+        tfId.setText("");
+        tfServico.setText("");
+        tfPreco.setText("");
     }
 
     public void setServicosDAO(ServicosDAO servicosDAO) {

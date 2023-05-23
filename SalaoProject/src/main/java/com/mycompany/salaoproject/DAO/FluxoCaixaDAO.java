@@ -23,4 +23,11 @@ public class FluxoCaixaDAO {
         PreparedStatement statement = helperDAO.getConnection().prepareStatement(query);
         return statement.executeQuery();
     }
+
+    public ResultSet getTotalProfit() throws SQLException {
+        String query = "SELECT SUM(valor_movimentado_entrada) - SUM(valor_movimentado_saida) AS lucro_total FROM fluxo_caixa";
+
+        PreparedStatement statement = helperDAO.getConnection().prepareStatement(query);
+        return statement.executeQuery();
+    }
 }

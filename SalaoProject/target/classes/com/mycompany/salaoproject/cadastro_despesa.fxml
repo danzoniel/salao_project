@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="549.0" minWidth="640.0" prefHeight="549.0" prefWidth="747.0" styleClass="anchor-pane-bd" stylesheets="@css/telas_crud.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="549.0" minWidth="640.0" prefHeight="549.0" prefWidth="747.0" styleClass="anchor-pane-bd" stylesheets="@css/telas_crud.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.salaoproject.CadastraDespesaController">
    <children>
       <GridPane layoutY="57.0" prefHeight="549.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -35,7 +35,7 @@
                   <fx:include maxHeight="30.0" prefHeight="30.0" source="menu.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-         <Button maxWidth="200.0" minWidth="150.0" mnemonicParsing="false" prefWidth="200.0" styleClass="loginButton" text="cadastrar despesa" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+         <Button fx:id="btnCadastrarDespesa" maxWidth="200.0" minWidth="150.0" mnemonicParsing="false" prefWidth="200.0" styleClass="loginButton" text="cadastrar despesa" GridPane.halignment="CENTER" GridPane.rowIndex="7" onMouseClicked="#cadastrarDespesa">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
@@ -68,7 +68,7 @@
                <VBox prefHeight="147.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <Label text="Id" />
-                     <TextField styleClass="cadastra" />
+                     <TextField fx:id="tfId" styleClass="cadastra" />
                      <Label fx:id="lbErrorId" text="Label" textFill="RED" />
                   </children>
                </VBox>
@@ -82,8 +82,8 @@
                <VBox layoutX="24.0" layoutY="-86.0" prefHeight="114.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <Label text="Produto" />
-                     <TextField />
-                     <Label fx:id="lbErrorServicos" text="Label" textFill="RED" />
+                     <TextField fx:id="tfProduto" />
+                     <Label fx:id="lbErrorProduto" text="Label" textFill="RED" />
                   </children>
                </VBox>
             </children>
@@ -99,7 +99,7 @@
                <VBox layoutX="46.0" layoutY="-16.0" prefHeight="184.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <Label text="Preço unitário" />
-                     <TextField />
+                     <TextField fx:id="tfPrecoUn" />
                      <Label fx:id="lbErrorPreco" text="Label" textFill="RED" />
                   </children>
                </VBox>
@@ -113,8 +113,8 @@
                <VBox layoutX="31.0" layoutY="-50.0" prefHeight="150.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <Label text="Quantidade" />
-                     <TextField />
-                     <Label text="Label" textFill="RED" />
+                     <TextField fx:id="tfQuantidade" />
+                     <Label fx:id="lbErrorQuantidade" text="Label" textFill="RED" />
                   </children>
                </VBox>
             </children>
@@ -127,8 +127,8 @@
                <VBox layoutX="43.0" layoutY="-50.0" prefHeight="150.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <Label text="Data compra" />
-                     <DatePicker prefHeight="29.0" prefWidth="601.0" styleClass="text-field" />
-                     <Label text="Label" textFill="RED" />
+                     <DatePicker fx:id="dpDataCompra" prefHeight="29.0" prefWidth="1500.0" styleClass="text-field" />
+                     <Label fx:id="lbErrorDataCompra" text="Label" textFill="RED" />
                   </children>
                </VBox>
             </children>

@@ -2,6 +2,7 @@ package com.mycompany.salaoproject;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.TextStyle;
@@ -14,7 +15,6 @@ import com.mycompany.salaoproject.DAO.DespesaDAO;
 import com.mycompany.salaoproject.DAO.FluxoCaixaDAO;
 import com.mycompany.salaoproject.models.Comparecimento;
 import com.mycompany.salaoproject.models.Despesa;
-import com.mycompany.salaoproject.models.ItemModel;
 
 
 
@@ -25,6 +25,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 
 public class Tela_DashController {
 
@@ -36,9 +37,18 @@ public class Tela_DashController {
     private NumberAxis yAxis;
     @FXML
     private BarChart<String, Number> barChartLucro;
+    @FXML
+    private Label lbLucroTotal;
+    @FXML
+    private Label lbLucro1;
+    @FXML
+    private Label lbLucro2;
 
-    public void initialize() {
+    FluxoCaixaDAO fluxoCaixaDAO;
+
+    public void initialize() throws SQLException {
         createMonthlyProfitChart();
+        alteraLabelChart();
         geraComparecimentoChart();
         geraDespesaChart();
     }
@@ -94,14 +104,15 @@ public class Tela_DashController {
         try {
             DespesaDAO despesasDAO = new DespesaDAO(HelperDAO.getInstance());
     
-            List<Despesa> despesas = despesasDAO.getDespesas();
+            List<Despesa> despesas = despesasDAO.getDespesas(null);
     
             ObservableList<XYChart.Data<String, Integer>> dadosDespesas = FXCollections.observableArrayList();
     
             for (Month month : Month.values()) {
                 int despesasPorMes = 0;
                 for (Despesa despesa : despesas) {
-                    LocalDateTime despesaData = despesa.getDataSaida().toLocalDateTime();
+                    LocalDate despesaData = despesa.getDataSaida();
+
                     String mesDespesa = despesaData.getMonth().getDisplayName(TextStyle.FULL_STANDALONE, new Locale("pt", "BR"));
                     if (mesDespesa.equalsIgnoreCase(month.getDisplayName(TextStyle.FULL_STANDALONE, new Locale("pt", "BR")))) {
                         despesasPorMes += despesa.getValor();
@@ -155,5 +166,26 @@ public class Tela_DashController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
+
+    private void alteraLabelChart() throws SQLException {
+        FluxoCaixaDAO fluxoCaixaDAO = new FluxoCaixaDAO(HelperDAO.getInstance());
+
+        ResultSet resultSet = fluxoCaixaDAO.getTotalProfit();
+        
+        if (resultSet.next()) {
+            double lucroTotal = resultSet.getDouble("lucro_total");
+            double lucroHalf = lucroTotal / 2;
+            String lucroTotalString = String.format("%.2f", lucroTotal); 
+            String lucroHalfString = String.format("%.2f", lucroHalf);
+
+            lbLucroTotal.setText("R$ "+ lucroTotalString); 
+            lbLucro1.setText("R$ "+ lucroHalfString);
+            lbLucro2.setText("R$ "+ lucroHalfString);
+        }
+
+    }
+
+
 }
