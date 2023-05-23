@@ -21,9 +21,8 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="227.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="223.0" valignment="CENTER" vgrow="ALWAYS" />
             <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="227.0" valignment="CENTER" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
@@ -31,8 +30,14 @@
                <children>
                <fx:include maxHeight="30.0" prefHeight="30.0" source="menu.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children></AnchorPane>
-            <Label alignment="CENTER" styleClass="title-menu" text="Dashboards" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <SplitPane dividerPositions="0.49261744966442955" prefHeight="160.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <Label alignment="CENTER" styleClass="title-menu" text="Dashboards" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin></Label>
+            <SplitPane dividerPositions="0.49261744966442955" prefHeight="160.0" prefWidth="200.0" GridPane.rowIndex="2">
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
@@ -60,7 +65,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Nome1:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                              <Label text="Debora" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets right="10.0" />
                                  </GridPane.margin>
@@ -68,7 +73,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label text="Nome2:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                              <Label text="Rosana:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets right="10.0" />
                                  </GridPane.margin>
@@ -116,7 +121,7 @@
                   </AnchorPane>
                </items>
             </SplitPane>
-            <SplitPane dividerPositions="0.49261744966442955" prefHeight="160.0" prefWidth="200.0" GridPane.rowIndex="4">
+            <SplitPane dividerPositions="0.49261744966442955" prefHeight="160.0" prefWidth="200.0" GridPane.rowIndex="3">
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>

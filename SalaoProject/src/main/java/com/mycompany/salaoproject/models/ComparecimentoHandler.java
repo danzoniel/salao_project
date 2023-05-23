@@ -29,7 +29,8 @@ public class ComparecimentoHandler {
                     if (!comparecimentoDAO.existeComparecimento(agendamento)) {
                         Comparecimento comparecimento = new Comparecimento(agendamento.getEmailCliente(), agendamento.getDataAgendamento());
                         comparecimentoDAO.criarComparecimento(comparecimento);
-
+                        int idGerado = comparecimentoDAO.obterIdGerado(); 
+                        comparecimento.setId_comparecimento(idGerado);
                         double valorMovimentadoEntrada = 100.0; 
                         LocalDate dataMovimentacao = LocalDate.now();
 

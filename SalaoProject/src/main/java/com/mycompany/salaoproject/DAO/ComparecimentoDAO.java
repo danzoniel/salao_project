@@ -92,4 +92,15 @@ public class ComparecimentoDAO {
         return count;
     }
 
+    public int obterIdGerado() throws SQLException {
+        String query = "SELECT LAST_INSERT_ID()";
+        try (Statement statement = helperDAO.getConnection().createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        }
+        throw new SQLException("Não foi possível obter o ID gerado.");
+    }
+
 }
